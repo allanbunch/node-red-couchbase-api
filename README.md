@@ -11,19 +11,11 @@ This API enables you to run SQL++ queries and set request-level parameters.
 
 ## Installation
 
-### Via the Node-RED Editor
-
-You can install this collection of Couchbase API nodes using Node-RED's palette manager. Search for:
-
-```text
-@inductiv/node-red-couchbase-api
-```
-
 ### Via NPM
 
 ```bash
 cd $HOME/.node-red
-npm i @inductiv/node-red-couchbase-api
+npm install https://github.com/allanbunch/node-red-couchbase-api.git
 ```
 
 ## Usage
