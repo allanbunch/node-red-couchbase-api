@@ -1,0 +1,48 @@
+{
+    "AdminRestApi": {
+        "label": {
+            "service": "サービス",
+            "method": "メソッド",
+            "host": "ホスト",
+            "header": "ヘッダ",
+            "value": "値",
+            "isQuery": "クエリ"
+        },
+        "status": {
+            "requesting": "要求中"
+        },
+        "parameters": {
+            "get_clusters": "GET /admin/clusters",
+            "get_cluster": "GET /admin/clusters/{cluster}",
+            "cluster": "cluster",
+            "get_nodes": "GET /admin/clusters/{cluster}/nodes",
+            "get_node": "GET /admin/clusters/{cluster}/nodes/{node}",
+            "node": "node",
+            "get_config": "GET /admin/config",
+            "get_prepareds": "GET /admin/prepareds",
+            "get_prepared": "GET /admin/prepareds/{name}",
+            "name": "name",
+            "delete_prepared": "DELETE /admin/prepareds/{name}",
+            "get_active_requests": "GET /admin/active_requests",
+            "get_active_request": "GET /admin/active_requests/{request}",
+            "request": "request",
+            "delete_active_request": "DELETE /admin/active_requests/{request}",
+            "get_completed_requests": "GET /admin/completed_requests",
+            "get_completed_request": "GET /admin/completed_requests/{request}",
+            "delete_completed_request": "DELETE /admin/completed_requests/{request}",
+            "get_prepared_indexes": "GET /admin/indexes/prepareds",
+            "get_active_indexes": "GET /admin/indexes/active_requests",
+            "get_completed_indexes": "GET /admin/indexes/completed_requests",
+            "get_ping": "GET /admin/ping",
+            "get_vitals": "GET /admin/vitals",
+            "get_stats": "GET /admin/stats",
+            "get_stat": "GET /admin/stats/{stat}",
+            "stat": "stat",
+            "get_debug_vars": "GET /debug/vars",
+            "get_settings": "GET /admin/settings",
+            "post_settings": "POST /admin/settings",
+            "settings": "Settings",
+            "optionalParameters": "任意項目"
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "IndexStatisticsRestApi": {
+        "label": {
+            "service": "Service",
+            "method": "Method",
+            "host": "Host",
+            "header": "Header",
+            "value": "Value",
+            "isQuery": "isQuery"
+        },
+        "status": {
+            "requesting": "requesting"
+        },
+        "parameters": {
+            "get_node_stats": "GET /api/v1/stats",
+            "pretty": "pretty",
+            "redact": "redact",
+            "skipEmpty": "skipEmpty",
+            "get_keyspace_stats": "GET /api/v1/stats/{keyspace}",
+            "keyspace": "keyspace",
+            "get_index_stats": "GET /api/v1/stats/{keyspace}/{index}",
+            "index": "index",
+            "partition": "partition",
+            "optionalParameters": "Options"
+        }
+    }
+}

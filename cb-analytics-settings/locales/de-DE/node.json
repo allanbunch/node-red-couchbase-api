@@ -1,0 +1,21 @@
+{
+    "AnalyticsSettingsRestApi": {
+        "label": {
+            "service": "Service",
+            "method": "Methode",
+            "host": "Host",
+            "header": "Header",
+            "value": "Wert",
+            "isQuery": "Suchanfrage"
+        },
+        "status": {
+            "requesting": "Anfrage..."
+        },
+        "parameters": {
+            "get_settings": "GET /settings/analytics",
+            "post_settings": "POST /settings/analytics",
+            "numReplicas": "numReplicas",
+            "optionalParameters": "Optionen"
+        }
+    }
+}

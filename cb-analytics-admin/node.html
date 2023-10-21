@@ -1,0 +1,246 @@
+<script type="text/javascript">
+    RED.nodes.registerType('analytics-administration-rest-apis', {
+        category: 'couchbase',
+        color: '#f5f5f5',
+        paletteLabel: 'analytics admin',
+        defaults: {
+            service: { value: "", type: "analytics-administration-rest-apis-service", required: true },
+            method: { value: "", required: true },
+            cancel_request_clientContextId: { value: "" },
+            cancel_request_clientContextIdType: { value: "str" },
+            name: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'couchbase-icon.png',
+        label: function () {
+            return this.name || this.method || "Analytics Admin API";
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+            var selectedMethod = $('#node-input-method option:selected');
+            if (!selectedMethod.val()) {
+                var methods = $('#node-input-method').children();
+                var firstMethod = methods.first();
+                $('#node-input-method').val(firstMethod.val());
+            }
+
+            var showParameters = function () {
+
+                $("#node-input-cancel_request_clientContextId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-cancel_request_clientContextIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#cancel_request_clientContextId").hide();
+
+                $("#optional-parameters").hide();
+                $("#optional-parameters-label").hide();
+                if ($("#node-input-method").val() === 'cancel_request') {
+
+                }
+                if ($("#node-input-method").val() === 'cluster_status') {
+
+                }
+                if ($("#node-input-method").val() === 'restart_cluster') {
+
+                }
+                if ($("#node-input-method").val() === 'restart_node') {
+
+                }
+                if ($("#node-input-method").val() === 'ingestion_status') {
+
+                }
+                if ($("#node-input-method").val() === 'monitor_node') {
+
+                }
+
+                if ($("#optional-parameters").prop('checked')) {
+                    if ($("#node-input-method").val() === 'cancel_request') {
+
+                        $("#cancel_request_clientContextId").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'cluster_status') {
+
+                    }
+                    if ($("#node-input-method").val() === 'restart_cluster') {
+
+                    }
+                    if ($("#node-input-method").val() === 'restart_node') {
+
+                    }
+                    if ($("#node-input-method").val() === 'ingestion_status') {
+
+                    }
+                    if ($("#node-input-method").val() === 'monitor_node') {
+
+                    }
+                } else {
+                    if ($("#node-input-method").val() === 'cancel_request') {
+
+                        $("#cancel_request_clientContextId").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'cluster_status') {
+
+                    }
+                    if ($("#node-input-method").val() === 'restart_cluster') {
+
+                    }
+                    if ($("#node-input-method").val() === 'restart_node') {
+
+                    }
+                    if ($("#node-input-method").val() === 'ingestion_status') {
+
+                    }
+                    if ($("#node-input-method").val() === 'monitor_node') {
+
+                    }
+                }
+            };
+
+            $("#node-input-method").change(function () {
+                showParameters();
+            });
+
+            $("#optional-parameters").change(function () {
+                showParameters();
+            });
+
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="analytics-administration-rest-apis">
+    <div class="form-row">
+        <label for="node-input-service"><i class="fa fa-cloud"></i> <span data-i18n="AnalyticsAdministrationRestApis.label.service"></span></label>
+        <input type="text" id="node-input-service">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-method"><i class="fa fa-tasks"></i> <span data-i18n="AnalyticsAdministrationRestApis.label.method"></span></label>
+        <select id="node-input-method">
+            <option value="cancel_request" data-i18n="AnalyticsAdministrationRestApis.parameters.cancel_request"></option>
+            <option value="cluster_status" data-i18n="AnalyticsAdministrationRestApis.parameters.cluster_status"></option>
+            <option value="restart_cluster" data-i18n="AnalyticsAdministrationRestApis.parameters.restart_cluster"></option>
+            <option value="restart_node" data-i18n="AnalyticsAdministrationRestApis.parameters.restart_node"></option>
+            <option value="ingestion_status" data-i18n="AnalyticsAdministrationRestApis.parameters.ingestion_status"></option>
+            <option value="monitor_node" data-i18n="AnalyticsAdministrationRestApis.parameters.monitor_node"></option>
+        </select>
+        &nbsp;
+        <input type="checkbox" id="optional-parameters" style="margin-left: 10px; vertical-align: text-bottom; width: auto;">
+        <label for="optional-parameters" id="optional-parameters-label" style="width: auto;"> <span data-i18n="AnalyticsAdministrationRestApis.parameters.optionalParameters"></span></label>
+    </div>
+
+    <div class="form-row" id="cancel_request_clientContextId">
+        <label for="node-input-cancel_request_clientContextId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsAdministrationRestApis.parameters.clientContextId"></span></label>
+
+        <input type="text" id="node-input-cancel_request_clientContextId" placeholder="Identifier passed by the client that is used to identify an active request to be cancelled." style="width:70%">
+        <input type="hidden" id="node-input-cancel_request_clientContextIdType">
+    </div>
+
+    <hr/>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="analytics-administration-rest-apis">
+
+    <p>The Analytics Administration REST APIs are provided by the Analytics service.
+These APIs enables you to manage and monitor the Analytics service.
+
+The API schemes and host URLs are as follows:
+
+* `http://node:8095/`
+* `https://node:18095/` (for secure access)
+
+where `node` is the host name or IP address of a node running the Analytics service.
+</p>
+    <p><b>Methods</b></p>
+        <h3>DELETE /analytics/admin/active_requests</h3>
+        <p>Cancels an active request.</p>
+        <dl class="message-properties">
+        <dt>client_context_id <span class="property-type">string</span></dt>
+        </dl>
+        <h3>GET /analytics/cluster</h3>
+        <p>Shows various details about the current status of the Analytics Service, such as the service state, the state of each node partition, and the replicas of each partition.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>POST /analytics/cluster/restart</h3>
+        <p>Restarts all Analytics Service nodes in the cluster.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>POST /analytics/node/restart</h3>
+        <p>Restarts the specified Analytics Service node.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /analytics/status/ingestion</h3>
+        <p>Shows the progress of ingestion by the Analytics service, for each Analytics collection.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /analytics/node/agg/stats/remaining</h3>
+        <p>Shows the number of mutations in the DCP queue that have not yet been ingested by the Analytics service, for each Analytics collection.
+
+NOTE: This endpoint may not return meaningful results in Couchbase Server 7.0 and later. The reported number of mutations may be different to the actual number of mutations in the Analytics collection. For this reason, this endpoint has been deprecated, and you should use the [Ingestion Status](#ingestion-status) endpoint instead.
+</p>
+        <dl class="message-properties">
+        </dl>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType('analytics-administration-rest-apis-service', {
+        category: 'config',
+        defaults: {
+            host: { value: "", required: true },
+
+
+            name: { value: "" },
+        },
+        credentials: {
+            username: { type: "text" },
+            password: { type: "password" },
+            temp: { type: "text" }
+        },
+        label: function () {
+            return this.name || this.host;
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="analytics-administration-rest-apis-service">
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="fa fa-globe"></i> <span data-i18n="AnalyticsAdministrationRestApis.label.host"></span></label>
+        <input type="text" id="node-config-input-host" placeholder="http://localhost:8095">
+    </div>
+
+    <div class="form-row">
+        <label id="node-config-input-username-label" for="node-config-input-username"><i class="fa fa-user"></i> <span data-i18n="node-red:common.label.username"></span></label>
+        <input type="text" id="node-config-input-username" placeholder="">
+    </div>
+    <div class="form-row">
+        <label id="node-config-input-password-label" for="node-config-input-password"><i class="fa fa-lock"></i> <span data-i18n="node-red:common.label.password"></span></label>
+        <input type="password" id="node-config-input-password" placeholder="">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="analytics-administration-rest-apis-service">
+    <p><b>Host</b>: URL to connect</p>
+
+    <p><b>Username</b>: Username in Basic authentication</p>
+    <p><b>Password</b>: Password in Basic authentication</p>
+</script>

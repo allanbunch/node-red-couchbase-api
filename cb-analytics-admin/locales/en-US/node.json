@@ -1,0 +1,25 @@
+{
+    "AnalyticsAdministrationRestApis": {
+        "label": {
+            "service": "Service",
+            "method": "Method",
+            "host": "Host",
+            "header": "Header",
+            "value": "Value",
+            "isQuery": "isQuery"
+        },
+        "status": {
+            "requesting": "requesting"
+        },
+        "parameters": {
+            "cancel_request": "DELETE /analytics/admin/active_requests",
+            "clientContextId": "client_context_id",
+            "cluster_status": "GET /analytics/cluster",
+            "restart_cluster": "POST /analytics/cluster/restart",
+            "restart_node": "POST /analytics/node/restart",
+            "ingestion_status": "GET /analytics/status/ingestion",
+            "monitor_node": "GET /analytics/node/agg/stats/remaining",
+            "optionalParameters": "Options"
+        }
+    }
+}

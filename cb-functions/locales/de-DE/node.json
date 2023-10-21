@@ -1,0 +1,26 @@
+{
+    "FunctionsRestApi": {
+        "label": {
+            "service": "Service",
+            "method": "Methode",
+            "host": "Host",
+            "header": "Header",
+            "value": "Wert",
+            "isQuery": "Suchanfrage"
+        },
+        "status": {
+            "requesting": "Anfrage..."
+        },
+        "parameters": {
+            "get_collection": "GET /evaluator/v1/libraries",
+            "bucket": "bucket",
+            "scope": "scope",
+            "get_library": "GET /evaluator/v1/libraries/{library}",
+            "library": "library",
+            "post_library": "POST /evaluator/v1/libraries/{library}",
+            "functions": "functions",
+            "delete_library": "DELETE /evaluator/v1/libraries/{library}",
+            "optionalParameters": "Optionen"
+        }
+    }
+}

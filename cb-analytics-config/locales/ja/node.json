@@ -1,0 +1,24 @@
+{
+    "AnalyticsConfigurationRestApi": {
+        "label": {
+            "service": "サービス",
+            "method": "メソッド",
+            "host": "ホスト",
+            "header": "ヘッダ",
+            "value": "値",
+            "isQuery": "クエリ"
+        },
+        "status": {
+            "requesting": "要求中"
+        },
+        "parameters": {
+            "get_service": "GET /analytics/config/service",
+            "put_service": "PUT /analytics/config/service",
+            "service": "Service",
+            "get_node": "GET /analytics/config/node",
+            "put_node": "PUT /analytics/config/node",
+            "node": "Node",
+            "optionalParameters": "任意項目"
+        }
+    }
+}

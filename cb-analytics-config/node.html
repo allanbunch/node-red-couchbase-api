@@ -1,0 +1,248 @@
+<script type="text/javascript">
+    RED.nodes.registerType('analytics-configuration-rest-api', {
+        category: 'couchbase',
+        color: '#f5f5f5',
+        paletteLabel: 'analytics config',
+        defaults: {
+            service: { value: "", type: "analytics-configuration-rest-api-service", required: true },
+            method: { value: "", required: true },
+            put_service_service: { value: "" },
+            put_service_serviceType: { value: "str" },
+            put_node_node: { value: "" },
+            put_node_nodeType: { value: "str" },
+            name: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'couchbase-icon.png',
+        label: function () {
+            return this.name || this.method || "Analytics Config API";
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+            var selectedMethod = $('#node-input-method option:selected');
+            if (!selectedMethod.val()) {
+                var methods = $('#node-input-method').children();
+                var firstMethod = methods.first();
+                $('#node-input-method').val(firstMethod.val());
+            }
+
+            var showParameters = function () {
+
+                $("#node-input-put_service_service").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_service_serviceType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_service_service").hide();
+
+                $("#node-input-put_node_node").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_node_nodeType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_node_node").hide();
+
+                $("#optional-parameters").hide();
+                $("#optional-parameters-label").hide();
+                if ($("#node-input-method").val() === 'get_service') {
+
+                }
+                if ($("#node-input-method").val() === 'put_service') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+
+                }
+                if ($("#node-input-method").val() === 'get_node') {
+
+                }
+                if ($("#node-input-method").val() === 'put_node') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+
+                }
+
+                if ($("#optional-parameters").prop('checked')) {
+                    if ($("#node-input-method").val() === 'get_service') {
+
+                    }
+                    if ($("#node-input-method").val() === 'put_service') {
+
+                        $("#put_service_service").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_node') {
+
+                    }
+                    if ($("#node-input-method").val() === 'put_node') {
+
+                        $("#put_node_node").show();
+
+                    }
+                } else {
+                    if ($("#node-input-method").val() === 'get_service') {
+
+                    }
+                    if ($("#node-input-method").val() === 'put_service') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_node') {
+
+                    }
+                    if ($("#node-input-method").val() === 'put_node') {
+
+                    }
+                }
+            };
+
+            $("#node-input-method").change(function () {
+                showParameters();
+            });
+
+            $("#optional-parameters").change(function () {
+                showParameters();
+            });
+
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="analytics-configuration-rest-api">
+    <div class="form-row">
+        <label for="node-input-service"><i class="fa fa-cloud"></i> <span data-i18n="AnalyticsConfigurationRestApi.label.service"></span></label>
+        <input type="text" id="node-input-service">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-method"><i class="fa fa-tasks"></i> <span data-i18n="AnalyticsConfigurationRestApi.label.method"></span></label>
+        <select id="node-input-method">
+            <option value="get_service" data-i18n="AnalyticsConfigurationRestApi.parameters.get_service"></option>
+            <option value="put_service" data-i18n="AnalyticsConfigurationRestApi.parameters.put_service"></option>
+            <option value="get_node" data-i18n="AnalyticsConfigurationRestApi.parameters.get_node"></option>
+            <option value="put_node" data-i18n="AnalyticsConfigurationRestApi.parameters.put_node"></option>
+        </select>
+        &nbsp;
+        <input type="checkbox" id="optional-parameters" style="margin-left: 10px; vertical-align: text-bottom; width: auto;">
+        <label for="optional-parameters" id="optional-parameters-label" style="width: auto;"> <span data-i18n="AnalyticsConfigurationRestApi.parameters.optionalParameters"></span></label>
+    </div>
+
+    <div class="form-row" id="put_service_service">
+        <label for="node-input-put_service_service"><i class="fa fa-list"></i> <span data-i18n="AnalyticsConfigurationRestApi.parameters.service"></span></label>
+
+        <input type="text" id="node-input-put_service_service" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-put_service_serviceType">
+    </div>
+
+    <div class="form-row" id="put_node_node">
+        <label for="node-input-put_node_node"><i class="fa fa-list"></i> <span data-i18n="AnalyticsConfigurationRestApi.parameters.node"></span></label>
+
+        <input type="text" id="node-input-put_node_node" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-put_node_nodeType">
+    </div>
+
+    <hr/>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="analytics-configuration-rest-api">
+
+    <p>The Analytics Configuration REST API is provided by the Analytics service.
+This API enables you to configure Analytics nodes and clusters.
+
+The API schemes and host URLs are as follows:
+
+* `http://node:8095/`
+* `https://node:18095/` (for secure access)
+
+where `node` is the host name or IP address of a node running the Analytics service.
+</p>
+    <p><b>Methods</b></p>
+        <h3>GET /analytics/config/service</h3>
+        <p>Views service-level parameters, which apply to all nodes running the Analytics service.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>PUT /analytics/config/service</h3>
+        <p>Modifies service-level parameters, which apply to all nodes running the Analytics service.
+
+IMPORTANT: For the configuration changes to take effect,
+you must restart the Analytics cluster using the [Cluster Restart API](rest-admin.html#cluster-restart).
+</p>
+        <dl class="message-properties">
+        <dt>Service <span class="property-type"></span></dt>
+        </dl>
+        <h3>GET /analytics/config/node</h3>
+        <p>Views node-specific parameters, which apply to the node receiving the request.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>PUT /analytics/config/node</h3>
+        <p>Views node-specific parameters, which apply to the node receiving the request.
+
+IMPORTANT: For the configuration changes to take effect,
+you must restart the node using the [Node Restart API](rest-admin.html#node-restart),
+or restart the Analytics cluster using the [Cluster Restart API](rest-admin.html#cluster-restart).
+</p>
+        <dl class="message-properties">
+        <dt>Node <span class="property-type"></span></dt>
+        </dl>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType('analytics-configuration-rest-api-service', {
+        category: 'config',
+        defaults: {
+            host: { value: "", required: true },
+
+
+            name: { value: "" },
+        },
+        credentials: {
+            username: { type: "text" },
+            password: { type: "password" },
+            temp: { type: "text" }
+        },
+        label: function () {
+            return this.name || this.host;
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="analytics-configuration-rest-api-service">
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="fa fa-globe"></i> <span data-i18n="AnalyticsConfigurationRestApi.label.host"></span></label>
+        <input type="text" id="node-config-input-host" placeholder="http://localhost:1880">
+    </div>
+
+    <div class="form-row">
+        <label id="node-config-input-username-label" for="node-config-input-username"><i class="fa fa-user"></i> <span data-i18n="node-red:common.label.username"></span></label>
+        <input type="text" id="node-config-input-username" placeholder="">
+    </div>
+    <div class="form-row">
+        <label id="node-config-input-password-label" for="node-config-input-password"><i class="fa fa-lock"></i> <span data-i18n="node-red:common.label.password"></span></label>
+        <input type="password" id="node-config-input-password" placeholder="">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="analytics-configuration-rest-api-service">
+    <p><b>Host</b>: URL to connect</p>
+
+    <p><b>Username</b>: Username in Basic authentication</p>
+    <p><b>Password</b>: Password in Basic authentication</p>
+</script>

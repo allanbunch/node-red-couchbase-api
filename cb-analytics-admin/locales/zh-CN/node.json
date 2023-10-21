@@ -1,0 +1,25 @@
+{
+    "AnalyticsAdministrationRestApis": {
+        "label": {
+            "service": "服务",
+            "method": "方法",
+            "host": "网络主机",
+            "header": "字头段",
+            "value": "值",
+            "isQuery": "查询"
+        },
+        "status": {
+            "requesting": "请求中"
+        },
+        "parameters": {
+            "cancel_request": "DELETE /analytics/admin/active_requests",
+            "clientContextId": "client_context_id",
+            "cluster_status": "GET /analytics/cluster",
+            "restart_cluster": "POST /analytics/cluster/restart",
+            "restart_node": "POST /analytics/node/restart",
+            "ingestion_status": "GET /analytics/status/ingestion",
+            "monitor_node": "GET /analytics/node/agg/stats/remaining",
+            "optionalParameters": "可选项"
+        }
+    }
+}

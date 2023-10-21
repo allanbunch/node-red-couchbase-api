@@ -1,0 +1,861 @@
+<script type="text/javascript">
+    RED.nodes.registerType('admin-rest-api', {
+        category: 'couchbase',
+        color: '#f5f5f5',
+        paletteLabel: "cluster admin",
+        defaults: {
+            service: { value: "", type: "admin-rest-api-service", required: true },
+            method: { value: "", required: true },
+            get_cluster_cluster: { value: "" },
+            get_cluster_clusterType: { value: "str" },
+            get_nodes_cluster: { value: "" },
+            get_nodes_clusterType: { value: "str" },
+            get_node_cluster: { value: "" },
+            get_node_clusterType: { value: "str" },
+            get_node_node: { value: "" },
+            get_node_nodeType: { value: "str" },
+            get_prepared_name: { value: "" },
+            get_prepared_nameType: { value: "str" },
+            delete_prepared_name: { value: "" },
+            delete_prepared_nameType: { value: "str" },
+            get_active_request_request: { value: "" },
+            get_active_request_requestType: { value: "str" },
+            delete_active_request_request: { value: "" },
+            delete_active_request_requestType: { value: "str" },
+            get_completed_request_request: { value: "" },
+            get_completed_request_requestType: { value: "str" },
+            delete_completed_request_request: { value: "" },
+            delete_completed_request_requestType: { value: "str" },
+            get_stat_stat: { value: "" },
+            get_stat_statType: { value: "str" },
+            post_settings_settings: { value: "" },
+            post_settings_settingsType: { value: "str" },
+            name: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'couchbase-icon.png',
+        label: function () {
+            return this.name || this.method || "Couchbase Admin API";
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+            var selectedMethod = $('#node-input-method option:selected');
+            if (!selectedMethod.val()) {
+                var methods = $('#node-input-method').children();
+                var firstMethod = methods.first();
+                $('#node-input-method').val(firstMethod.val());
+            }
+
+            var showParameters = function () {
+
+                $("#node-input-get_cluster_cluster").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_cluster_clusterType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_cluster_cluster").hide();
+
+                $("#node-input-get_nodes_cluster").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_nodes_clusterType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_nodes_cluster").hide();
+
+                $("#node-input-get_node_cluster").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_node_clusterType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_node_cluster").hide();
+
+                $("#node-input-get_node_node").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_node_nodeType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_node_node").hide();
+
+                $("#node-input-get_prepared_name").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_prepared_nameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_prepared_name").hide();
+
+                $("#node-input-delete_prepared_name").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-delete_prepared_nameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#delete_prepared_name").hide();
+
+                $("#node-input-get_active_request_request").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_active_request_requestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_active_request_request").hide();
+
+                $("#node-input-delete_active_request_request").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-delete_active_request_requestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#delete_active_request_request").hide();
+
+                $("#node-input-get_completed_request_request").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_completed_request_requestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_completed_request_request").hide();
+
+                $("#node-input-delete_completed_request_request").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-delete_completed_request_requestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#delete_completed_request_request").hide();
+
+
+                $("#get_stat_stat").hide();
+
+                $("#node-input-post_settings_settings").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_settings_settingsType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_settings_settings").hide();
+
+                $("#optional-parameters").hide();
+                $("#optional-parameters-label").hide();
+                if ($("#node-input-method").val() === 'get_clusters') {
+
+                }
+                if ($("#node-input-method").val() === 'get_cluster') {
+
+                }
+                if ($("#node-input-method").val() === 'get_nodes') {
+
+                }
+                if ($("#node-input-method").val() === 'get_node') {
+
+                }
+                if ($("#node-input-method").val() === 'get_config') {
+
+                }
+                if ($("#node-input-method").val() === 'get_prepareds') {
+
+                }
+                if ($("#node-input-method").val() === 'get_prepared') {
+
+                }
+                if ($("#node-input-method").val() === 'delete_prepared') {
+
+                }
+                if ($("#node-input-method").val() === 'get_active_requests') {
+
+                }
+                if ($("#node-input-method").val() === 'get_active_request') {
+
+                }
+                if ($("#node-input-method").val() === 'delete_active_request') {
+
+                }
+                if ($("#node-input-method").val() === 'get_completed_requests') {
+
+                }
+                if ($("#node-input-method").val() === 'get_completed_request') {
+
+                }
+                if ($("#node-input-method").val() === 'delete_completed_request') {
+
+                }
+                if ($("#node-input-method").val() === 'get_prepared_indexes') {
+
+                }
+                if ($("#node-input-method").val() === 'get_active_indexes') {
+
+                }
+                if ($("#node-input-method").val() === 'get_completed_indexes') {
+
+                }
+                if ($("#node-input-method").val() === 'get_ping') {
+
+                }
+                if ($("#node-input-method").val() === 'get_vitals') {
+
+                }
+                if ($("#node-input-method").val() === 'get_stats') {
+
+                }
+                if ($("#node-input-method").val() === 'get_stat') {
+
+                }
+                if ($("#node-input-method").val() === 'get_debug_vars') {
+
+                }
+                if ($("#node-input-method").val() === 'get_settings') {
+
+                }
+                if ($("#node-input-method").val() === 'post_settings') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+
+                }
+
+                if ($("#optional-parameters").prop('checked')) {
+                    if ($("#node-input-method").val() === 'get_clusters') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_cluster') {
+
+                        $("#get_cluster_cluster").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_nodes') {
+
+                        $("#get_nodes_cluster").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_node') {
+
+                        $("#get_node_cluster").show();
+
+                        $("#get_node_node").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_config') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_prepareds') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_prepared') {
+
+                        $("#get_prepared_name").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'delete_prepared') {
+
+                        $("#delete_prepared_name").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_active_requests') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_active_request') {
+
+                        $("#get_active_request_request").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'delete_active_request') {
+
+                        $("#delete_active_request_request").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_completed_requests') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_completed_request') {
+
+                        $("#get_completed_request_request").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'delete_completed_request') {
+
+                        $("#delete_completed_request_request").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_prepared_indexes') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_active_indexes') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_completed_indexes') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_ping') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_vitals') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_stats') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_stat') {
+
+                        $("#get_stat_stat").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_debug_vars') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_settings') {
+
+                    }
+                    if ($("#node-input-method").val() === 'post_settings') {
+
+                        $("#post_settings_settings").show();
+
+                    }
+                } else {
+                    if ($("#node-input-method").val() === 'get_clusters') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_cluster') {
+
+                        $("#get_cluster_cluster").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_nodes') {
+
+                        $("#get_nodes_cluster").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_node') {
+
+                        $("#get_node_cluster").show();
+
+                        $("#get_node_node").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_config') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_prepareds') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_prepared') {
+
+                        $("#get_prepared_name").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'delete_prepared') {
+
+                        $("#delete_prepared_name").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_active_requests') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_active_request') {
+
+                        $("#get_active_request_request").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'delete_active_request') {
+
+                        $("#delete_active_request_request").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_completed_requests') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_completed_request') {
+
+                        $("#get_completed_request_request").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'delete_completed_request') {
+
+                        $("#delete_completed_request_request").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_prepared_indexes') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_active_indexes') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_completed_indexes') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_ping') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_vitals') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_stats') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_stat') {
+
+                        $("#get_stat_stat").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_debug_vars') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_settings') {
+
+                    }
+                    if ($("#node-input-method").val() === 'post_settings') {
+
+                    }
+                }
+            };
+
+            $("#node-input-method").change(function () {
+                showParameters();
+            });
+
+            $("#optional-parameters").change(function () {
+                showParameters();
+            });
+
+            var selected_get_stat_stat = $('#node-input-get_stat_stat option:selected');
+            if (!selected_get_stat_stat.val()) {
+                var children_get_stat_stat = $('#node-input-get_stat_stat').children();
+                var first_get_stat_stat = children_get_stat_stat.first();
+                $('#node-input-get_stat_stat').val(first_get_stat_stat.val());
+            }
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="admin-rest-api">
+    <div class="form-row">
+        <label for="node-input-service"><i class="fa fa-cloud"></i> <span data-i18n="AdminRestApi.label.service"></span></label>
+        <input type="text" id="node-input-service">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-method"><i class="fa fa-tasks"></i> <span data-i18n="AdminRestApi.label.method"></span></label>
+        <select id="node-input-method">
+            <option value="get_clusters" data-i18n="AdminRestApi.parameters.get_clusters"></option>
+            <option value="get_cluster" data-i18n="AdminRestApi.parameters.get_cluster"></option>
+            <option value="get_nodes" data-i18n="AdminRestApi.parameters.get_nodes"></option>
+            <option value="get_node" data-i18n="AdminRestApi.parameters.get_node"></option>
+            <option value="get_config" data-i18n="AdminRestApi.parameters.get_config"></option>
+            <option value="get_prepareds" data-i18n="AdminRestApi.parameters.get_prepareds"></option>
+            <option value="get_prepared" data-i18n="AdminRestApi.parameters.get_prepared"></option>
+            <option value="delete_prepared" data-i18n="AdminRestApi.parameters.delete_prepared"></option>
+            <option value="get_active_requests" data-i18n="AdminRestApi.parameters.get_active_requests"></option>
+            <option value="get_active_request" data-i18n="AdminRestApi.parameters.get_active_request"></option>
+            <option value="delete_active_request" data-i18n="AdminRestApi.parameters.delete_active_request"></option>
+            <option value="get_completed_requests" data-i18n="AdminRestApi.parameters.get_completed_requests"></option>
+            <option value="get_completed_request" data-i18n="AdminRestApi.parameters.get_completed_request"></option>
+            <option value="delete_completed_request" data-i18n="AdminRestApi.parameters.delete_completed_request"></option>
+            <option value="get_prepared_indexes" data-i18n="AdminRestApi.parameters.get_prepared_indexes"></option>
+            <option value="get_active_indexes" data-i18n="AdminRestApi.parameters.get_active_indexes"></option>
+            <option value="get_completed_indexes" data-i18n="AdminRestApi.parameters.get_completed_indexes"></option>
+            <option value="get_ping" data-i18n="AdminRestApi.parameters.get_ping"></option>
+            <option value="get_vitals" data-i18n="AdminRestApi.parameters.get_vitals"></option>
+            <option value="get_stats" data-i18n="AdminRestApi.parameters.get_stats"></option>
+            <option value="get_stat" data-i18n="AdminRestApi.parameters.get_stat"></option>
+            <option value="get_debug_vars" data-i18n="AdminRestApi.parameters.get_debug_vars"></option>
+            <option value="get_settings" data-i18n="AdminRestApi.parameters.get_settings"></option>
+            <option value="post_settings" data-i18n="AdminRestApi.parameters.post_settings"></option>
+        </select>
+        &nbsp;
+        <input type="checkbox" id="optional-parameters" style="margin-left: 10px; vertical-align: text-bottom; width: auto;">
+        <label for="optional-parameters" id="optional-parameters-label" style="width: auto;"> <span data-i18n="AdminRestApi.parameters.optionalParameters"></span></label>
+    </div>
+
+    <div class="form-row" id="get_cluster_cluster">
+        <label for="node-input-get_cluster_cluster"><i class="fa fa-list"></i> <span data-i18n="AdminRestApi.parameters.cluster"></span></label>
+
+        <input type="text" id="node-input-get_cluster_cluster" placeholder="The name of a cluster." style="width:70%">
+        <input type="hidden" id="node-input-get_cluster_clusterType">
+    </div>
+
+    <div class="form-row" id="get_nodes_cluster">
+        <label for="node-input-get_nodes_cluster"><i class="fa fa-list"></i> <span data-i18n="AdminRestApi.parameters.cluster"></span></label>
+
+        <input type="text" id="node-input-get_nodes_cluster" placeholder="The name of a cluster." style="width:70%">
+        <input type="hidden" id="node-input-get_nodes_clusterType">
+    </div>
+
+    <div class="form-row" id="get_node_cluster">
+        <label for="node-input-get_node_cluster"><i class="fa fa-list"></i> <span data-i18n="AdminRestApi.parameters.cluster"></span></label>
+
+        <input type="text" id="node-input-get_node_cluster" placeholder="The name of a cluster." style="width:70%">
+        <input type="hidden" id="node-input-get_node_clusterType">
+    </div>
+
+    <div class="form-row" id="get_node_node">
+        <label for="node-input-get_node_node"><i class="fa fa-list"></i> <span data-i18n="AdminRestApi.parameters.node"></span></label>
+
+        <input type="text" id="node-input-get_node_node" placeholder="The name of a node." style="width:70%">
+        <input type="hidden" id="node-input-get_node_nodeType">
+    </div>
+
+    <div class="form-row" id="get_prepared_name">
+        <label for="node-input-get_prepared_name"><i class="fa fa-list"></i> <span data-i18n="AdminRestApi.parameters.name"></span></label>
+
+        <input type="text" id="node-input-get_prepared_name" placeholder="The name of a prepared statement.
+This may be a UUID that was assigned automatically, or a name that was user-specified when the statement was created.
+" style="width:70%">
+        <input type="hidden" id="node-input-get_prepared_nameType">
+    </div>
+
+    <div class="form-row" id="delete_prepared_name">
+        <label for="node-input-delete_prepared_name"><i class="fa fa-list"></i> <span data-i18n="AdminRestApi.parameters.name"></span></label>
+
+        <input type="text" id="node-input-delete_prepared_name" placeholder="The name of a prepared statement.
+This may be a UUID that was assigned automatically, or a name that was user-specified when the statement was created.
+" style="width:70%">
+        <input type="hidden" id="node-input-delete_prepared_nameType">
+    </div>
+
+    <div class="form-row" id="get_active_request_request">
+        <label for="node-input-get_active_request_request"><i class="fa fa-list"></i> <span data-i18n="AdminRestApi.parameters.request"></span></label>
+
+        <input type="text" id="node-input-get_active_request_request" placeholder="The name of a request.
+This is the `requestID` that was assigned automatically when the statement was created.
+" style="width:70%">
+        <input type="hidden" id="node-input-get_active_request_requestType">
+    </div>
+
+    <div class="form-row" id="delete_active_request_request">
+        <label for="node-input-delete_active_request_request"><i class="fa fa-list"></i> <span data-i18n="AdminRestApi.parameters.request"></span></label>
+
+        <input type="text" id="node-input-delete_active_request_request" placeholder="The name of a request.
+This is the `requestID` that was assigned automatically when the statement was created.
+" style="width:70%">
+        <input type="hidden" id="node-input-delete_active_request_requestType">
+    </div>
+
+    <div class="form-row" id="get_completed_request_request">
+        <label for="node-input-get_completed_request_request"><i class="fa fa-list"></i> <span data-i18n="AdminRestApi.parameters.request"></span></label>
+
+        <input type="text" id="node-input-get_completed_request_request" placeholder="The name of a request.
+This is the `requestID` that was assigned automatically when the statement was created.
+" style="width:70%">
+        <input type="hidden" id="node-input-get_completed_request_requestType">
+    </div>
+
+    <div class="form-row" id="delete_completed_request_request">
+        <label for="node-input-delete_completed_request_request"><i class="fa fa-list"></i> <span data-i18n="AdminRestApi.parameters.request"></span></label>
+
+        <input type="text" id="node-input-delete_completed_request_request" placeholder="The name of a request.
+This is the `requestID` that was assigned automatically when the statement was created.
+" style="width:70%">
+        <input type="hidden" id="node-input-delete_completed_request_requestType">
+    </div>
+
+    <div class="form-row" id="get_stat_stat">
+        <label for="node-input-get_stat_stat"><i class="fa fa-list"></i> <span data-i18n="AdminRestApi.parameters.stat"></span></label>
+        <select id="node-input-get_stat_stat">
+            <option value="active_requests">active_requests</option>
+            <option value="at_plus">at_plus</option>
+            <option value="audit_actions">audit_actions</option>
+            <option value="audit_actions_failed">audit_actions_failed</option>
+            <option value="audit_requests_filtered">audit_requests_filtered</option>
+            <option value="audit_requests_total">audit_requests_total</option>
+            <option value="cancelled">cancelled</option>
+            <option value="deletes">deletes</option>
+            <option value="errors">errors</option>
+            <option value="index_scans">index_scans</option>
+            <option value="inserts">inserts</option>
+            <option value="invalid_requests">invalid_requests</option>
+            <option value="mutations">mutations</option>
+            <option value="prepared">prepared</option>
+            <option value="primary_scans">primary_scans</option>
+            <option value="queued_requests">queued_requests</option>
+            <option value="request_time">request_time</option>
+            <option value="request_timer">request_timer</option>
+            <option value="requests">requests</option>
+            <option value="requests_1000ms">requests_1000ms</option>
+            <option value="requests_250ms">requests_250ms</option>
+            <option value="requests_5000ms">requests_5000ms</option>
+            <option value="requests_500ms">requests_500ms</option>
+            <option value="result_count">result_count</option>
+            <option value="result_size">result_size</option>
+            <option value="scan_plus">scan_plus</option>
+            <option value="selects">selects</option>
+            <option value="service_time">service_time</option>
+            <option value="unbounded">unbounded</option>
+            <option value="updates">updates</option>
+            <option value="warnings">warnings</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="post_settings_settings">
+        <label for="node-input-post_settings_settings"><i class="fa fa-list"></i> <span data-i18n="AdminRestApi.parameters.settings"></span></label>
+
+        <input type="text" id="node-input-post_settings_settings" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-post_settings_settingsType">
+    </div>
+
+    <hr/>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="admin-rest-api">
+
+    <p>The Admin REST API is a secondary API provided by the Query service.
+This API enables you to retrieve statistics about the clusters and nodes running the Query service; view or specify node-level settings; and view or delete requests.
+
+The API schemes and host URLs are as follows:{blank}
+
+* `+http://node:8093/+`
+* `+https://node:18093/+` (for secure access)
+
+where [.var]`node` is the host name or IP address of a computer running the Query service.
+</p>
+    <p><b>Methods</b></p>
+        <h3>GET /admin/clusters</h3>
+        <p>Returns information about all clusters.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /admin/clusters/{cluster}</h3>
+        <p>Returns information about the specified cluster.</p>
+        <dl class="message-properties">
+        <dt>cluster <span class="property-type">string</span></dt>
+        </dl>
+        <h3>GET /admin/clusters/{cluster}/nodes</h3>
+        <p>Returns information about all nodes in the specified cluster.</p>
+        <dl class="message-properties">
+        <dt>cluster <span class="property-type">string</span></dt>
+        </dl>
+        <h3>GET /admin/clusters/{cluster}/nodes/{node}</h3>
+        <p>Returns information about the specified node in the specified cluster.</p>
+        <dl class="message-properties">
+        <dt>cluster <span class="property-type">string</span></dt>
+        <dt>node <span class="property-type">string</span></dt>
+        </dl>
+        <h3>GET /admin/config</h3>
+        <p>Returns the configuration of the query service on the cluster.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /admin/prepareds</h3>
+        <p>Returns all prepared statements.
+[NOTE]
+====
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-prepared-get[Get Prepared Statements] for examples.
+====
+</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /admin/prepareds/{name}</h3>
+        <p>Returns the specified prepared statement.
+[NOTE]
+====
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-prepared-get[Get Prepared Statements] for examples.
+====
+</p>
+        <dl class="message-properties">
+        <dt>name <span class="property-type">string</span></dt>
+        </dl>
+        <h3>DELETE /admin/prepareds/{name}</h3>
+        <p>Deletes the specified prepared statement.
+[NOTE]
+====
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-prepared-delete[Delete Prepared Statements] for examples.
+====
+</p>
+        <dl class="message-properties">
+        <dt>name <span class="property-type">string</span></dt>
+        </dl>
+        <h3>GET /admin/active_requests</h3>
+        <p>Returns all active query requests.
+[NOTE]
+====
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-active-get[Get Active Requests] for examples.
+====
+</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /admin/active_requests/{request}</h3>
+        <p>Returns the specified active query request.
+[NOTE]
+====
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-active-get[Get Active Requests] for examples.
+====
+</p>
+        <dl class="message-properties">
+        <dt>request <span class="property-type">string</span></dt>
+        </dl>
+        <h3>DELETE /admin/active_requests/{request}</h3>
+        <p>Terminates the specified active query request.
+[NOTE]
+====
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-active-delete[Terminate an Active Request] for examples.
+====
+</p>
+        <dl class="message-properties">
+        <dt>request <span class="property-type">string</span></dt>
+        </dl>
+        <h3>GET /admin/completed_requests</h3>
+        <p>Returns all completed requests.
+[NOTE]
+====
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-completed-get[Get Completed Requests] for examples.
+====
+</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /admin/completed_requests/{request}</h3>
+        <p>Returns the specified completed request.
+[NOTE]
+====
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-completed-get[Get Completed Requests] for examples.
+====
+</p>
+        <dl class="message-properties">
+        <dt>request <span class="property-type">string</span></dt>
+        </dl>
+        <h3>DELETE /admin/completed_requests/{request}</h3>
+        <p>Purges the specified completed request.
+[NOTE]
+====
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-completed-delete[Purge the Completed Requests] for examples.
+====
+</p>
+        <dl class="message-properties">
+        <dt>request <span class="property-type">string</span></dt>
+        </dl>
+        <h3>GET /admin/indexes/prepareds</h3>
+        <p>Returns all prepared index statements.
+[TIP]
+====
+* Use <<_get_prepared>> to get information about a prepared index statement.
+* Use <<_delete_prepared>> to delete a prepared index statement.
+====
+</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /admin/indexes/active_requests</h3>
+        <p>Returns all active index requests.
+[TIP]
+====
+* Use <<_get_active_request>> to get information about an active index request.
+* Use <<_delete_active_request>> to terminate an active index request.
+====
+</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /admin/indexes/completed_requests</h3>
+        <p>Returns all completed index requests.
+[TIP]
+====
+* Use <<_get_completed_request>> to get information about a completed index request.
+* Use <<_delete_completed_request>> to purge a completed index request.
+====
+</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /admin/ping</h3>
+        <p>Returns a minimal response, indicating that the service is running and reachable.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /admin/vitals</h3>
+        <p>Returns data about the running state and health of the query engine.
+This information can be very useful to assess the current workload and performance characteristics of a query engine, and hence load-balance the requests being sent to various query engines.
+[NOTE]
+====
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#vitals[Get System Vitals] for examples.
+====
+</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /admin/stats</h3>
+        <p>Returns all statistics.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /admin/stats/{stat}</h3>
+        <p>Returns the specified statistic.</p>
+        <dl class="message-properties">
+        <dt>stat <span class="property-type">string</span></dt>
+        </dl>
+        <h3>GET /debug/vars</h3>
+        <p>Currently unused.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /admin/settings</h3>
+        <p>Returns node-level query settings.
+[NOTE]
+====
+Refer to xref:settings:query-settings.adoc[Query Settings] for more information.
+====
+</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>POST /admin/settings</h3>
+        <p>Updates node-level query settings.
+[NOTE]
+====
+Refer to xref:settings:query-settings.adoc[Query Settings] for more information.
+====
+</p>
+        <dl class="message-properties">
+        <dt>Settings <span class="property-type"></span></dt>
+        </dl>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType('admin-rest-api-service', {
+        category: 'config',
+        defaults: {
+            host: { value: "", required: true },
+
+
+            name: { value: "" },
+        },
+        credentials: {
+            username: { type: "text" },
+            password: { type: "password" },
+            temp: { type: "text" }
+        },
+        label: function () {
+            return this.name || this.host;
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="admin-rest-api-service">
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="fa fa-globe"></i> <span data-i18n="AdminRestApi.label.host"></span></label>
+        <input type="text" id="node-config-input-host" placeholder="http://localhost:8093">
+    </div>
+
+    <div class="form-row">
+        <label id="node-config-input-username-label" for="node-config-input-username"><i class="fa fa-user"></i> <span data-i18n="node-red:common.label.username"></span></label>
+        <input type="text" id="node-config-input-username" placeholder="">
+    </div>
+    <div class="form-row">
+        <label id="node-config-input-password-label" for="node-config-input-password"><i class="fa fa-lock"></i> <span data-i18n="node-red:common.label.password"></span></label>
+        <input type="password" id="node-config-input-password" placeholder="">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="admin-rest-api-service">
+    <p><b>Host</b>: URL to connect</p>
+
+    <p><b>Username</b>: Username in Basic authentication</p>
+    <p><b>Password</b>: Password in Basic authentication</p>
+</script>

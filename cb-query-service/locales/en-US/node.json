@@ -1,0 +1,21 @@
+{
+    "QueryServiceRestApi": {
+        "label": {
+            "service": "Service",
+            "method": "Method",
+            "host": "Host",
+            "header": "Header",
+            "value": "Value",
+            "isQuery": "isQuery"
+        },
+        "status": {
+            "requesting": "requesting"
+        },
+        "parameters": {
+            "post_service": "POST /query/service",
+            "parameters": "Parameters",
+            "get_service": "GET /query/service",
+            "optionalParameters": "Options"
+        }
+    }
+}

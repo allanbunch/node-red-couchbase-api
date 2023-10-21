@@ -1,0 +1,471 @@
+<script type="text/javascript">
+    RED.nodes.registerType('index-statistics-rest-api', {
+        category: 'couchbase',
+        color: '#f5f5f5',
+        paletteLabel: 'indexes',
+        defaults: {
+            service: { value: "", type: "index-statistics-rest-api-service", required: true },
+            method: { value: "", required: true },
+            get_node_stats_pretty: { value: "" },
+            get_node_stats_prettyType: { value: "str" },
+            get_node_stats_redact: { value: "" },
+            get_node_stats_redactType: { value: "str" },
+            get_node_stats_skipEmpty: { value: "" },
+            get_node_stats_skipEmptyType: { value: "str" },
+            get_keyspace_stats_keyspace: { value: "" },
+            get_keyspace_stats_keyspaceType: { value: "str" },
+            get_keyspace_stats_pretty: { value: "" },
+            get_keyspace_stats_prettyType: { value: "str" },
+            get_keyspace_stats_redact: { value: "" },
+            get_keyspace_stats_redactType: { value: "str" },
+            get_keyspace_stats_skipEmpty: { value: "" },
+            get_keyspace_stats_skipEmptyType: { value: "str" },
+            get_index_stats_keyspace: { value: "" },
+            get_index_stats_keyspaceType: { value: "str" },
+            get_index_stats_index: { value: "" },
+            get_index_stats_indexType: { value: "str" },
+            get_index_stats_pretty: { value: "" },
+            get_index_stats_prettyType: { value: "str" },
+            get_index_stats_partition: { value: "" },
+            get_index_stats_partitionType: { value: "str" },
+            get_index_stats_redact: { value: "" },
+            get_index_stats_redactType: { value: "str" },
+            get_index_stats_skipEmpty: { value: "" },
+            get_index_stats_skipEmptyType: { value: "str" },
+            name: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'couchbase-icon.png',
+        label: function () {
+            return this.name || this.method || "Index API";
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+            var selectedMethod = $('#node-input-method option:selected');
+            if (!selectedMethod.val()) {
+                var methods = $('#node-input-method').children();
+                var firstMethod = methods.first();
+                $('#node-input-method').val(firstMethod.val());
+            }
+
+            var showParameters = function () {
+
+                $("#node-input-get_node_stats_pretty").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_node_stats_prettyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_node_stats_pretty").hide();
+
+                $("#node-input-get_node_stats_redact").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_node_stats_redactType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_node_stats_redact").hide();
+
+                $("#node-input-get_node_stats_skipEmpty").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_node_stats_skipEmptyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_node_stats_skipEmpty").hide();
+
+                $("#node-input-get_keyspace_stats_keyspace").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_keyspace_stats_keyspaceType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_keyspace_stats_keyspace").hide();
+
+                $("#node-input-get_keyspace_stats_pretty").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_keyspace_stats_prettyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_keyspace_stats_pretty").hide();
+
+                $("#node-input-get_keyspace_stats_redact").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_keyspace_stats_redactType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_keyspace_stats_redact").hide();
+
+                $("#node-input-get_keyspace_stats_skipEmpty").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_keyspace_stats_skipEmptyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_keyspace_stats_skipEmpty").hide();
+
+                $("#node-input-get_index_stats_keyspace").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_index_stats_keyspaceType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_index_stats_keyspace").hide();
+
+                $("#node-input-get_index_stats_index").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_index_stats_indexType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_index_stats_index").hide();
+
+                $("#node-input-get_index_stats_pretty").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_index_stats_prettyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_index_stats_pretty").hide();
+
+                $("#node-input-get_index_stats_partition").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_index_stats_partitionType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_index_stats_partition").hide();
+
+                $("#node-input-get_index_stats_redact").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_index_stats_redactType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_index_stats_redact").hide();
+
+                $("#node-input-get_index_stats_skipEmpty").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_index_stats_skipEmptyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_index_stats_skipEmpty").hide();
+
+                $("#optional-parameters").hide();
+                $("#optional-parameters-label").hide();
+                if ($("#node-input-method").val() === 'get_node_stats') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+
+                }
+                if ($("#node-input-method").val() === 'get_keyspace_stats') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+
+                }
+                if ($("#node-input-method").val() === 'get_index_stats') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+
+                }
+
+                if ($("#optional-parameters").prop('checked')) {
+                    if ($("#node-input-method").val() === 'get_node_stats') {
+
+                        $("#get_node_stats_pretty").show();
+
+                        $("#get_node_stats_redact").show();
+
+                        $("#get_node_stats_skipEmpty").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_keyspace_stats') {
+
+                        $("#get_keyspace_stats_keyspace").show();
+
+                        $("#get_keyspace_stats_pretty").show();
+
+                        $("#get_keyspace_stats_redact").show();
+
+                        $("#get_keyspace_stats_skipEmpty").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_index_stats') {
+
+                        $("#get_index_stats_keyspace").show();
+
+                        $("#get_index_stats_index").show();
+
+                        $("#get_index_stats_pretty").show();
+
+                        $("#get_index_stats_partition").show();
+
+                        $("#get_index_stats_redact").show();
+
+                        $("#get_index_stats_skipEmpty").show();
+
+                    }
+                } else {
+                    if ($("#node-input-method").val() === 'get_node_stats') {
+
+                    }
+                    if ($("#node-input-method").val() === 'get_keyspace_stats') {
+
+                        $("#get_keyspace_stats_keyspace").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_index_stats') {
+
+                        $("#get_index_stats_keyspace").show();
+
+                        $("#get_index_stats_index").show();
+
+                    }
+                }
+            };
+
+            $("#node-input-method").change(function () {
+                showParameters();
+            });
+
+            $("#optional-parameters").change(function () {
+                showParameters();
+            });
+
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="index-statistics-rest-api">
+    <div class="form-row">
+        <label for="node-input-service"><i class="fa fa-cloud"></i> <span data-i18n="IndexStatisticsRestApi.label.service"></span></label>
+        <input type="text" id="node-input-service">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-method"><i class="fa fa-tasks"></i> <span data-i18n="IndexStatisticsRestApi.label.method"></span></label>
+        <select id="node-input-method">
+            <option value="get_node_stats" data-i18n="IndexStatisticsRestApi.parameters.get_node_stats"></option>
+            <option value="get_keyspace_stats" data-i18n="IndexStatisticsRestApi.parameters.get_keyspace_stats"></option>
+            <option value="get_index_stats" data-i18n="IndexStatisticsRestApi.parameters.get_index_stats"></option>
+        </select>
+        &nbsp;
+        <input type="checkbox" id="optional-parameters" style="margin-left: 10px; vertical-align: text-bottom; width: auto;">
+        <label for="optional-parameters" id="optional-parameters-label" style="width: auto;"> <span data-i18n="IndexStatisticsRestApi.parameters.optionalParameters"></span></label>
+    </div>
+
+    <div class="form-row" id="get_node_stats_pretty">
+        <label for="node-input-get_node_stats_pretty"><i class="fa fa-list"></i> <span data-i18n="IndexStatisticsRestApi.parameters.pretty"></span></label>
+
+        <input type="text" id="node-input-get_node_stats_pretty" placeholder="Whether the output should be formatted with indentations and newlines." style="width:70%">
+        <input type="hidden" id="node-input-get_node_stats_prettyType">
+    </div>
+
+    <div class="form-row" id="get_node_stats_redact">
+        <label for="node-input-get_node_stats_redact"><i class="fa fa-list"></i> <span data-i18n="IndexStatisticsRestApi.parameters.redact"></span></label>
+
+        <input type="text" id="node-input-get_node_stats_redact" placeholder="Whether keyspace and index names should be redacted in the output.
+" style="width:70%">
+        <input type="hidden" id="node-input-get_node_stats_redactType">
+    </div>
+
+    <div class="form-row" id="get_node_stats_skipEmpty">
+        <label for="node-input-get_node_stats_skipEmpty"><i class="fa fa-list"></i> <span data-i18n="IndexStatisticsRestApi.parameters.skipEmpty"></span></label>
+
+        <input type="text" id="node-input-get_node_stats_skipEmpty" placeholder="Whether empty, null, or zero statistics should be omitted from the output." style="width:70%">
+        <input type="hidden" id="node-input-get_node_stats_skipEmptyType">
+    </div>
+
+    <div class="form-row" id="get_keyspace_stats_keyspace">
+        <label for="node-input-get_keyspace_stats_keyspace"><i class="fa fa-list"></i> <span data-i18n="IndexStatisticsRestApi.parameters.keyspace"></span></label>
+
+        <input type="text" id="node-input-get_keyspace_stats_keyspace" placeholder="The name of a keyspace.
+This must contain a bucket name, which may be followed by an optional scope name and an optional collection name, separated by dots.
+For example, `bucket.scope.collection`.
+
+
+If any part of the keyspace name contains a dot, that part of the keyspace name must be wrapped in backticks.
+For example, `pass:c[`bucket.1`.scope.collection]`.
+" style="width:70%">
+        <input type="hidden" id="node-input-get_keyspace_stats_keyspaceType">
+    </div>
+
+    <div class="form-row" id="get_keyspace_stats_pretty">
+        <label for="node-input-get_keyspace_stats_pretty"><i class="fa fa-list"></i> <span data-i18n="IndexStatisticsRestApi.parameters.pretty"></span></label>
+
+        <input type="text" id="node-input-get_keyspace_stats_pretty" placeholder="Whether the output should be formatted with indentations and newlines." style="width:70%">
+        <input type="hidden" id="node-input-get_keyspace_stats_prettyType">
+    </div>
+
+    <div class="form-row" id="get_keyspace_stats_redact">
+        <label for="node-input-get_keyspace_stats_redact"><i class="fa fa-list"></i> <span data-i18n="IndexStatisticsRestApi.parameters.redact"></span></label>
+
+        <input type="text" id="node-input-get_keyspace_stats_redact" placeholder="Whether keyspace and index names should be redacted in the output.
+" style="width:70%">
+        <input type="hidden" id="node-input-get_keyspace_stats_redactType">
+    </div>
+
+    <div class="form-row" id="get_keyspace_stats_skipEmpty">
+        <label for="node-input-get_keyspace_stats_skipEmpty"><i class="fa fa-list"></i> <span data-i18n="IndexStatisticsRestApi.parameters.skipEmpty"></span></label>
+
+        <input type="text" id="node-input-get_keyspace_stats_skipEmpty" placeholder="Whether empty, null, or zero statistics should be omitted from the output." style="width:70%">
+        <input type="hidden" id="node-input-get_keyspace_stats_skipEmptyType">
+    </div>
+
+    <div class="form-row" id="get_index_stats_keyspace">
+        <label for="node-input-get_index_stats_keyspace"><i class="fa fa-list"></i> <span data-i18n="IndexStatisticsRestApi.parameters.keyspace"></span></label>
+
+        <input type="text" id="node-input-get_index_stats_keyspace" placeholder="The name of a keyspace.
+This must contain a bucket name, which may be followed by an optional scope name and an optional collection name, separated by dots.
+For example, `bucket.scope.collection`.
+
+
+If any part of the keyspace name contains a dot, that part of the keyspace name must be wrapped in backticks.
+For example, `pass:c[`bucket.1`.scope.collection]`.
+" style="width:70%">
+        <input type="hidden" id="node-input-get_index_stats_keyspaceType">
+    </div>
+
+    <div class="form-row" id="get_index_stats_index">
+        <label for="node-input-get_index_stats_index"><i class="fa fa-list"></i> <span data-i18n="IndexStatisticsRestApi.parameters.index"></span></label>
+
+        <input type="text" id="node-input-get_index_stats_index" placeholder="The name of an index." style="width:70%">
+        <input type="hidden" id="node-input-get_index_stats_indexType">
+    </div>
+
+    <div class="form-row" id="get_index_stats_pretty">
+        <label for="node-input-get_index_stats_pretty"><i class="fa fa-list"></i> <span data-i18n="IndexStatisticsRestApi.parameters.pretty"></span></label>
+
+        <input type="text" id="node-input-get_index_stats_pretty" placeholder="Whether the output should be formatted with indentations and newlines." style="width:70%">
+        <input type="hidden" id="node-input-get_index_stats_prettyType">
+    </div>
+
+    <div class="form-row" id="get_index_stats_partition">
+        <label for="node-input-get_index_stats_partition"><i class="fa fa-list"></i> <span data-i18n="IndexStatisticsRestApi.parameters.partition"></span></label>
+
+        <input type="text" id="node-input-get_index_stats_partition" placeholder="Whether statistics for index partitions should be included." style="width:70%">
+        <input type="hidden" id="node-input-get_index_stats_partitionType">
+    </div>
+
+    <div class="form-row" id="get_index_stats_redact">
+        <label for="node-input-get_index_stats_redact"><i class="fa fa-list"></i> <span data-i18n="IndexStatisticsRestApi.parameters.redact"></span></label>
+
+        <input type="text" id="node-input-get_index_stats_redact" placeholder="Whether keyspace and index names should be redacted in the output.
+" style="width:70%">
+        <input type="hidden" id="node-input-get_index_stats_redactType">
+    </div>
+
+    <div class="form-row" id="get_index_stats_skipEmpty">
+        <label for="node-input-get_index_stats_skipEmpty"><i class="fa fa-list"></i> <span data-i18n="IndexStatisticsRestApi.parameters.skipEmpty"></span></label>
+
+        <input type="text" id="node-input-get_index_stats_skipEmpty" placeholder="Whether empty, null, or zero statistics should be omitted from the output." style="width:70%">
+        <input type="hidden" id="node-input-get_index_stats_skipEmptyType">
+    </div>
+
+    <hr/>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="index-statistics-rest-api">
+
+    <p>The Index Statistics REST API is provided by the Index service.
+This API enables you to get Index service statistics.
+
+The API schemes and host URLs are as follows:
+
+* `http://node:9102/`
+* `https://node:19102/` (for secure access)
+
+where `node` is the host name or IP address of a computer running the index service.
+</p>
+    <p><b>Methods</b></p>
+        <h3>GET /api/v1/stats</h3>
+        <p>Returns statistics for an index node, and for all indexes on that node.</p>
+        <dl class="message-properties">
+        <dt>pretty <span class="property-type">boolean</span></dt>
+        <dt>redact <span class="property-type">boolean</span></dt>
+        <dt>skipEmpty <span class="property-type">boolean</span></dt>
+        </dl>
+        <h3>GET /api/v1/stats/{keyspace}</h3>
+        <p>Returns statistics for all indexes within a bucket, scope, or collection.</p>
+        <dl class="message-properties">
+        <dt>keyspace <span class="property-type">string</span></dt>
+        <dt>pretty <span class="property-type">boolean</span></dt>
+        <dt>redact <span class="property-type">boolean</span></dt>
+        <dt>skipEmpty <span class="property-type">boolean</span></dt>
+        </dl>
+        <h3>GET /api/v1/stats/{keyspace}/{index}</h3>
+        <p>Returns statistics for an index.</p>
+        <dl class="message-properties">
+        <dt>keyspace <span class="property-type">string</span></dt>
+        <dt>index <span class="property-type">string</span></dt>
+        <dt>pretty <span class="property-type">boolean</span></dt>
+        <dt>partition <span class="property-type">boolean</span></dt>
+        <dt>redact <span class="property-type">boolean</span></dt>
+        <dt>skipEmpty <span class="property-type">boolean</span></dt>
+        </dl>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType('index-statistics-rest-api-service', {
+        category: 'config',
+        defaults: {
+            host: { value: "", required: true },
+
+
+            name: { value: "" },
+        },
+        credentials: {
+            username: { type: "text" },
+            password: { type: "password" },
+            temp: { type: "text" }
+        },
+        label: function () {
+            return this.name || this.host;
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="index-statistics-rest-api-service">
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="fa fa-globe"></i> <span data-i18n="IndexStatisticsRestApi.label.host"></span></label>
+        <input type="text" id="node-config-input-host" placeholder="http://node:9102">
+    </div>
+
+    <div class="form-row">
+        <label id="node-config-input-username-label" for="node-config-input-username"><i class="fa fa-user"></i> <span data-i18n="node-red:common.label.username"></span></label>
+        <input type="text" id="node-config-input-username" placeholder="">
+    </div>
+    <div class="form-row">
+        <label id="node-config-input-password-label" for="node-config-input-password"><i class="fa fa-lock"></i> <span data-i18n="node-red:common.label.password"></span></label>
+        <input type="password" id="node-config-input-password" placeholder="">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="index-statistics-rest-api-service">
+    <p><b>Host</b>: URL to connect</p>
+
+    <p><b>Username</b>: Username in Basic authentication</p>
+    <p><b>Password</b>: Password in Basic authentication</p>
+</script>

@@ -1,0 +1,25 @@
+{
+    "AnalyticsLibraryRestApi": {
+        "label": {
+            "service": "サービス",
+            "method": "メソッド",
+            "host": "ホスト",
+            "header": "ヘッダ",
+            "value": "値",
+            "isQuery": "クエリ"
+        },
+        "status": {
+            "requesting": "要求中"
+        },
+        "parameters": {
+            "get_collection": "GET /analytics/library/",
+            "post_library": "POST /analytics/library/{scope}/{library}",
+            "data": "data",
+            "type": "type",
+            "library": "library",
+            "scope": "scope",
+            "delete_library": "DELETE /analytics/library/{scope}/{library}",
+            "optionalParameters": "任意項目"
+        }
+    }
+}

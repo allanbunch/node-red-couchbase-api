@@ -1,0 +1,21 @@
+{
+    "QueryServiceRestApi": {
+        "label": {
+            "service": "サービス",
+            "method": "メソッド",
+            "host": "ホスト",
+            "header": "ヘッダ",
+            "value": "値",
+            "isQuery": "クエリ"
+        },
+        "status": {
+            "requesting": "要求中"
+        },
+        "parameters": {
+            "post_service": "POST /query/service",
+            "parameters": "Parameters",
+            "get_service": "GET /query/service",
+            "optionalParameters": "任意項目"
+        }
+    }
+}

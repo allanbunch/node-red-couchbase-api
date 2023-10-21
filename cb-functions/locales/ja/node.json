@@ -1,0 +1,26 @@
+{
+    "FunctionsRestApi": {
+        "label": {
+            "service": "サービス",
+            "method": "メソッド",
+            "host": "ホスト",
+            "header": "ヘッダ",
+            "value": "値",
+            "isQuery": "クエリ"
+        },
+        "status": {
+            "requesting": "要求中"
+        },
+        "parameters": {
+            "get_collection": "GET /evaluator/v1/libraries",
+            "bucket": "bucket",
+            "scope": "scope",
+            "get_library": "GET /evaluator/v1/libraries/{library}",
+            "library": "library",
+            "post_library": "POST /evaluator/v1/libraries/{library}",
+            "functions": "functions",
+            "delete_library": "DELETE /evaluator/v1/libraries/{library}",
+            "optionalParameters": "任意項目"
+        }
+    }
+}

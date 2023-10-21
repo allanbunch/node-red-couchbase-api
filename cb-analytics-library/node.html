@@ -1,0 +1,321 @@
+<script type="text/javascript">
+    RED.nodes.registerType('analytics-library-rest-api', {
+        category: 'couchbase',
+        color: '#f5f5f5',
+        paletteLabel: 'analytics library',
+        defaults: {
+            service: { value: "", type: "analytics-library-rest-api-service", required: true },
+            method: { value: "", required: true },
+            post_library_data: { value: "" },
+            post_library_dataType: { value: "str" },
+            post_library_type: { value: "" },
+            post_library_typeType: { value: "str" },
+            post_library_library: { value: "" },
+            post_library_libraryType: { value: "str" },
+            post_library_scope: { value: "" },
+            post_library_scopeType: { value: "str" },
+            delete_library_library: { value: "" },
+            delete_library_libraryType: { value: "str" },
+            delete_library_scope: { value: "" },
+            delete_library_scopeType: { value: "str" },
+            name: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'couchbase-icon.png',
+        label: function () {
+            return this.name || this.method || "Analytics Library API";
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+            var selectedMethod = $('#node-input-method option:selected');
+            if (!selectedMethod.val()) {
+                var methods = $('#node-input-method').children();
+                var firstMethod = methods.first();
+                $('#node-input-method').val(firstMethod.val());
+            }
+
+            var showParameters = function () {
+
+                $("#node-input-post_library_data").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_library_dataType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_library_data").hide();
+
+
+                $("#post_library_type").hide();
+
+                $("#node-input-post_library_library").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_library_libraryType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_library_library").hide();
+
+                $("#node-input-post_library_scope").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_library_scopeType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_library_scope").hide();
+
+                $("#node-input-delete_library_library").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-delete_library_libraryType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#delete_library_library").hide();
+
+                $("#node-input-delete_library_scope").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-delete_library_scopeType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#delete_library_scope").hide();
+
+                $("#optional-parameters").hide();
+                $("#optional-parameters-label").hide();
+                if ($("#node-input-method").val() === 'get_collection') {
+
+                }
+                if ($("#node-input-method").val() === 'post_library') {
+
+                }
+                if ($("#node-input-method").val() === 'delete_library') {
+
+                }
+
+                if ($("#optional-parameters").prop('checked')) {
+                    if ($("#node-input-method").val() === 'get_collection') {
+
+                    }
+                    if ($("#node-input-method").val() === 'post_library') {
+
+                        $("#post_library_data").show();
+
+                        $("#post_library_type").show();
+
+                        $("#post_library_library").show();
+
+                        $("#post_library_scope").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'delete_library') {
+
+                        $("#delete_library_library").show();
+
+                        $("#delete_library_scope").show();
+
+                    }
+                } else {
+                    if ($("#node-input-method").val() === 'get_collection') {
+
+                    }
+                    if ($("#node-input-method").val() === 'post_library') {
+
+                        $("#post_library_data").show();
+
+                        $("#post_library_type").show();
+
+                        $("#post_library_library").show();
+
+                        $("#post_library_scope").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'delete_library') {
+
+                        $("#delete_library_library").show();
+
+                        $("#delete_library_scope").show();
+
+                    }
+                }
+            };
+
+            $("#node-input-method").change(function () {
+                showParameters();
+            });
+
+            $("#optional-parameters").change(function () {
+                showParameters();
+            });
+
+            var selected_post_library_type = $('#node-input-post_library_type option:selected');
+            if (!selected_post_library_type.val()) {
+                var children_post_library_type = $('#node-input-post_library_type').children();
+                var first_post_library_type = children_post_library_type.first();
+                $('#node-input-post_library_type').val(first_post_library_type.val());
+            }
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="analytics-library-rest-api">
+    <div class="form-row">
+        <label for="node-input-service"><i class="fa fa-cloud"></i> <span data-i18n="AnalyticsLibraryRestApi.label.service"></span></label>
+        <input type="text" id="node-input-service">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-method"><i class="fa fa-tasks"></i> <span data-i18n="AnalyticsLibraryRestApi.label.method"></span></label>
+        <select id="node-input-method">
+            <option value="get_collection" data-i18n="AnalyticsLibraryRestApi.parameters.get_collection"></option>
+            <option value="post_library" data-i18n="AnalyticsLibraryRestApi.parameters.post_library"></option>
+            <option value="delete_library" data-i18n="AnalyticsLibraryRestApi.parameters.delete_library"></option>
+        </select>
+        &nbsp;
+        <input type="checkbox" id="optional-parameters" style="margin-left: 10px; vertical-align: text-bottom; width: auto;">
+        <label for="optional-parameters" id="optional-parameters-label" style="width: auto;"> <span data-i18n="AnalyticsLibraryRestApi.parameters.optionalParameters"></span></label>
+    </div>
+
+    <div class="form-row" id="post_library_data">
+        <label for="node-input-post_library_data"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLibraryRestApi.parameters.data"></span></label>
+
+        <input type="text" id="node-input-post_library_data" placeholder="The library and all its dependencies, packaged by shiv." style="width:70%">
+        <input type="hidden" id="node-input-post_library_dataType">
+    </div>
+
+    <div class="form-row" id="post_library_type">
+        <label for="node-input-post_library_type"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLibraryRestApi.parameters.type"></span></label>
+        <select id="node-input-post_library_type">
+            <option value="python">python</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="post_library_library">
+        <label for="node-input-post_library_library"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLibraryRestApi.parameters.library"></span></label>
+
+        <input type="text" id="node-input-post_library_library" placeholder="The name of a library." style="width:70%">
+        <input type="hidden" id="node-input-post_library_libraryType">
+    </div>
+
+    <div class="form-row" id="post_library_scope">
+        <label for="node-input-post_library_scope"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLibraryRestApi.parameters.scope"></span></label>
+
+        <input type="text" id="node-input-post_library_scope" placeholder="The name of the Analytics scope containing the library.
+
+The scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_library_scopeType">
+    </div>
+
+    <div class="form-row" id="delete_library_library">
+        <label for="node-input-delete_library_library"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLibraryRestApi.parameters.library"></span></label>
+
+        <input type="text" id="node-input-delete_library_library" placeholder="The name of a library." style="width:70%">
+        <input type="hidden" id="node-input-delete_library_libraryType">
+    </div>
+
+    <div class="form-row" id="delete_library_scope">
+        <label for="node-input-delete_library_scope"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLibraryRestApi.parameters.scope"></span></label>
+
+        <input type="text" id="node-input-delete_library_scope" placeholder="The name of the Analytics scope containing the library.
+
+The scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-delete_library_scopeType">
+    </div>
+
+    <hr/>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="analytics-library-rest-api">
+
+    <p>The Analytics Library REST API is provided by the Analytics service.
+This API enables you to manage the libraries that are used to create SQL\+\+ for Analytics user-defined functions.
+
+The API schemes and host URLs are as follows:
+
+* `http://localhost:8095/`
+* `https://localhost:18095/` (for secure access)
+
+Note that this API is only available on the loopback interface of a node
+running the Analytics service.
+</p>
+    <p><b>Methods</b></p>
+        <h3>GET /analytics/library/</h3>
+        <p>Returns all libraries and functions.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>POST /analytics/library/{scope}/{library}</h3>
+        <p>Creates the specified library and its associated functions. If the specified library exists, the existing library is overwritten.
+</p>
+        <dl class="message-properties">
+        <dt>data <span class="property-type">file</span></dt>
+        <dt>type <span class="property-type">string</span></dt>
+        <dt>library <span class="property-type">string</span></dt>
+        <dt>scope <span class="property-type">string</span></dt>
+        </dl>
+        <h3>DELETE /analytics/library/{scope}/{library}</h3>
+        <p>Deletes the specified library entirely.</p>
+        <dl class="message-properties">
+        <dt>library <span class="property-type">string</span></dt>
+        <dt>scope <span class="property-type">string</span></dt>
+        </dl>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType('analytics-library-rest-api-service', {
+        category: 'config',
+        defaults: {
+            host: { value: "", required: true },
+
+
+            name: { value: "" },
+        },
+        credentials: {
+            username: { type: "text" },
+            password: { type: "password" },
+            temp: { type: "text" }
+        },
+        label: function () {
+            return this.name || this.host;
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="analytics-library-rest-api-service">
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="fa fa-globe"></i> <span data-i18n="AnalyticsLibraryRestApi.label.host"></span></label>
+        <input type="text" id="node-config-input-host" placeholder="http://localhost:8095">
+    </div>
+
+    <div class="form-row">
+        <label id="node-config-input-username-label" for="node-config-input-username"><i class="fa fa-user"></i> <span data-i18n="node-red:common.label.username"></span></label>
+        <input type="text" id="node-config-input-username" placeholder="">
+    </div>
+    <div class="form-row">
+        <label id="node-config-input-password-label" for="node-config-input-password"><i class="fa fa-lock"></i> <span data-i18n="node-red:common.label.password"></span></label>
+        <input type="password" id="node-config-input-password" placeholder="">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="analytics-library-rest-api-service">
+    <p><b>Host</b>: URL to connect</p>
+
+    <p><b>Username</b>: Username in Basic authentication</p>
+    <p><b>Password</b>: Password in Basic authentication</p>
+</script>

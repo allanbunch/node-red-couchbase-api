@@ -1,0 +1,3001 @@
+<script type="text/javascript">
+    RED.nodes.registerType('analytics-links-rest-api', {
+        category: 'couchbase',
+        color: '#f5f5f5',
+        paletteLabel: 'analytics links',
+        defaults: {
+            service: { value: "", type: "analytics-links-rest-api-service", required: true },
+            method: { value: "", required: true },
+            post_alt_dataverse: { value: "" },
+            post_alt_dataverseType: { value: "str" },
+            post_alt_name: { value: "" },
+            post_alt_nameType: { value: "str" },
+            post_alt_type: { value: "" },
+            post_alt_typeType: { value: "str" },
+            post_alt_hostname: { value: "" },
+            post_alt_hostnameType: { value: "str" },
+            post_alt_encryption: { value: "" },
+            post_alt_encryptionType: { value: "str" },
+            post_alt_username: { value: "" },
+            post_alt_usernameType: { value: "str" },
+            post_alt_password: { value: "" },
+            post_alt_passwordType: { value: "str" },
+            post_alt_certificate: { value: "" },
+            post_alt_certificateType: { value: "str" },
+            post_alt_clientCertificate: { value: "" },
+            post_alt_clientCertificateType: { value: "str" },
+            post_alt_clientKey: { value: "" },
+            post_alt_clientKeyType: { value: "str" },
+            post_alt_accessKeyId: { value: "" },
+            post_alt_accessKeyIdType: { value: "str" },
+            post_alt_secretAccessKey: { value: "" },
+            post_alt_secretAccessKeyType: { value: "str" },
+            post_alt_sessionToken: { value: "" },
+            post_alt_sessionTokenType: { value: "str" },
+            post_alt_region: { value: "" },
+            post_alt_regionType: { value: "str" },
+            post_alt_serviceEndpoint: { value: "" },
+            post_alt_serviceEndpointType: { value: "str" },
+            post_alt_accountName: { value: "" },
+            post_alt_accountNameType: { value: "str" },
+            post_alt_accountKey: { value: "" },
+            post_alt_accountKeyType: { value: "str" },
+            post_alt_sharedAccessSignature: { value: "" },
+            post_alt_sharedAccessSignatureType: { value: "str" },
+            post_alt_managedIdentityId: { value: "" },
+            post_alt_managedIdentityIdType: { value: "str" },
+            post_alt_clientId: { value: "" },
+            post_alt_clientIdType: { value: "str" },
+            post_alt_tenantId: { value: "" },
+            post_alt_tenantIdType: { value: "str" },
+            post_alt_clientSecret: { value: "" },
+            post_alt_clientSecretType: { value: "str" },
+            post_alt_clientCertificatePassword: { value: "" },
+            post_alt_clientCertificatePasswordType: { value: "str" },
+            post_alt_endpoint: { value: "" },
+            post_alt_endpointType: { value: "str" },
+            post_alt_applicationDefaultCredentials: { value: "" },
+            post_alt_applicationDefaultCredentialsType: { value: "str" },
+            post_alt_jsonCredentials: { value: "" },
+            post_alt_jsonCredentialsType: { value: "str" },
+            get_all_dataverse: { value: "" },
+            get_all_dataverseType: { value: "str" },
+            get_all_name: { value: "" },
+            get_all_nameType: { value: "str" },
+            get_all_type: { value: "" },
+            get_all_typeType: { value: "str" },
+            put_alt_dataverse: { value: "" },
+            put_alt_dataverseType: { value: "str" },
+            put_alt_name: { value: "" },
+            put_alt_nameType: { value: "str" },
+            put_alt_type: { value: "" },
+            put_alt_typeType: { value: "str" },
+            put_alt_hostname: { value: "" },
+            put_alt_hostnameType: { value: "str" },
+            put_alt_encryption: { value: "" },
+            put_alt_encryptionType: { value: "str" },
+            put_alt_username: { value: "" },
+            put_alt_usernameType: { value: "str" },
+            put_alt_password: { value: "" },
+            put_alt_passwordType: { value: "str" },
+            put_alt_certificate: { value: "" },
+            put_alt_certificateType: { value: "str" },
+            put_alt_clientCertificate: { value: "" },
+            put_alt_clientCertificateType: { value: "str" },
+            put_alt_clientKey: { value: "" },
+            put_alt_clientKeyType: { value: "str" },
+            put_alt_accessKeyId: { value: "" },
+            put_alt_accessKeyIdType: { value: "str" },
+            put_alt_secretAccessKey: { value: "" },
+            put_alt_secretAccessKeyType: { value: "str" },
+            put_alt_sessionToken: { value: "" },
+            put_alt_sessionTokenType: { value: "str" },
+            put_alt_region: { value: "" },
+            put_alt_regionType: { value: "str" },
+            put_alt_serviceEndpoint: { value: "" },
+            put_alt_serviceEndpointType: { value: "str" },
+            put_alt_accountName: { value: "" },
+            put_alt_accountNameType: { value: "str" },
+            put_alt_accountKey: { value: "" },
+            put_alt_accountKeyType: { value: "str" },
+            put_alt_sharedAccessSignature: { value: "" },
+            put_alt_sharedAccessSignatureType: { value: "str" },
+            put_alt_managedIdentityId: { value: "" },
+            put_alt_managedIdentityIdType: { value: "str" },
+            put_alt_clientId: { value: "" },
+            put_alt_clientIdType: { value: "str" },
+            put_alt_tenantId: { value: "" },
+            put_alt_tenantIdType: { value: "str" },
+            put_alt_clientSecret: { value: "" },
+            put_alt_clientSecretType: { value: "str" },
+            put_alt_clientCertificatePassword: { value: "" },
+            put_alt_clientCertificatePasswordType: { value: "str" },
+            put_alt_endpoint: { value: "" },
+            put_alt_endpointType: { value: "str" },
+            put_alt_applicationDefaultCredentials: { value: "" },
+            put_alt_applicationDefaultCredentialsType: { value: "str" },
+            put_alt_jsonCredentials: { value: "" },
+            put_alt_jsonCredentialsType: { value: "str" },
+            delete_alt_dataverse: { value: "" },
+            delete_alt_dataverseType: { value: "str" },
+            delete_alt_name: { value: "" },
+            delete_alt_nameType: { value: "str" },
+            get_scope_scope: { value: "" },
+            get_scope_scopeType: { value: "str" },
+            get_scope_type: { value: "" },
+            get_scope_typeType: { value: "str" },
+            post_link_scope: { value: "" },
+            post_link_scopeType: { value: "str" },
+            post_link_name: { value: "" },
+            post_link_nameType: { value: "str" },
+            post_link_type: { value: "" },
+            post_link_typeType: { value: "str" },
+            post_link_hostname: { value: "" },
+            post_link_hostnameType: { value: "str" },
+            post_link_encryption: { value: "" },
+            post_link_encryptionType: { value: "str" },
+            post_link_username: { value: "" },
+            post_link_usernameType: { value: "str" },
+            post_link_password: { value: "" },
+            post_link_passwordType: { value: "str" },
+            post_link_certificate: { value: "" },
+            post_link_certificateType: { value: "str" },
+            post_link_clientCertificate: { value: "" },
+            post_link_clientCertificateType: { value: "str" },
+            post_link_clientKey: { value: "" },
+            post_link_clientKeyType: { value: "str" },
+            post_link_accessKeyId: { value: "" },
+            post_link_accessKeyIdType: { value: "str" },
+            post_link_secretAccessKey: { value: "" },
+            post_link_secretAccessKeyType: { value: "str" },
+            post_link_sessionToken: { value: "" },
+            post_link_sessionTokenType: { value: "str" },
+            post_link_region: { value: "" },
+            post_link_regionType: { value: "str" },
+            post_link_serviceEndpoint: { value: "" },
+            post_link_serviceEndpointType: { value: "str" },
+            post_link_accountName: { value: "" },
+            post_link_accountNameType: { value: "str" },
+            post_link_accountKey: { value: "" },
+            post_link_accountKeyType: { value: "str" },
+            post_link_sharedAccessSignature: { value: "" },
+            post_link_sharedAccessSignatureType: { value: "str" },
+            post_link_managedIdentityId: { value: "" },
+            post_link_managedIdentityIdType: { value: "str" },
+            post_link_clientId: { value: "" },
+            post_link_clientIdType: { value: "str" },
+            post_link_tenantId: { value: "" },
+            post_link_tenantIdType: { value: "str" },
+            post_link_clientSecret: { value: "" },
+            post_link_clientSecretType: { value: "str" },
+            post_link_clientCertificatePassword: { value: "" },
+            post_link_clientCertificatePasswordType: { value: "str" },
+            post_link_endpoint: { value: "" },
+            post_link_endpointType: { value: "str" },
+            post_link_applicationDefaultCredentials: { value: "" },
+            post_link_applicationDefaultCredentialsType: { value: "str" },
+            post_link_jsonCredentials: { value: "" },
+            post_link_jsonCredentialsType: { value: "str" },
+            get_link_scope: { value: "" },
+            get_link_scopeType: { value: "str" },
+            get_link_name: { value: "" },
+            get_link_nameType: { value: "str" },
+            get_link_type: { value: "" },
+            get_link_typeType: { value: "str" },
+            put_link_scope: { value: "" },
+            put_link_scopeType: { value: "str" },
+            put_link_name: { value: "" },
+            put_link_nameType: { value: "str" },
+            put_link_type: { value: "" },
+            put_link_typeType: { value: "str" },
+            put_link_hostname: { value: "" },
+            put_link_hostnameType: { value: "str" },
+            put_link_encryption: { value: "" },
+            put_link_encryptionType: { value: "str" },
+            put_link_username: { value: "" },
+            put_link_usernameType: { value: "str" },
+            put_link_password: { value: "" },
+            put_link_passwordType: { value: "str" },
+            put_link_certificate: { value: "" },
+            put_link_certificateType: { value: "str" },
+            put_link_clientCertificate: { value: "" },
+            put_link_clientCertificateType: { value: "str" },
+            put_link_clientKey: { value: "" },
+            put_link_clientKeyType: { value: "str" },
+            put_link_accessKeyId: { value: "" },
+            put_link_accessKeyIdType: { value: "str" },
+            put_link_secretAccessKey: { value: "" },
+            put_link_secretAccessKeyType: { value: "str" },
+            put_link_sessionToken: { value: "" },
+            put_link_sessionTokenType: { value: "str" },
+            put_link_region: { value: "" },
+            put_link_regionType: { value: "str" },
+            put_link_serviceEndpoint: { value: "" },
+            put_link_serviceEndpointType: { value: "str" },
+            put_link_accountName: { value: "" },
+            put_link_accountNameType: { value: "str" },
+            put_link_accountKey: { value: "" },
+            put_link_accountKeyType: { value: "str" },
+            put_link_sharedAccessSignature: { value: "" },
+            put_link_sharedAccessSignatureType: { value: "str" },
+            put_link_managedIdentityId: { value: "" },
+            put_link_managedIdentityIdType: { value: "str" },
+            put_link_clientId: { value: "" },
+            put_link_clientIdType: { value: "str" },
+            put_link_tenantId: { value: "" },
+            put_link_tenantIdType: { value: "str" },
+            put_link_clientSecret: { value: "" },
+            put_link_clientSecretType: { value: "str" },
+            put_link_clientCertificatePassword: { value: "" },
+            put_link_clientCertificatePasswordType: { value: "str" },
+            put_link_endpoint: { value: "" },
+            put_link_endpointType: { value: "str" },
+            put_link_applicationDefaultCredentials: { value: "" },
+            put_link_applicationDefaultCredentialsType: { value: "str" },
+            put_link_jsonCredentials: { value: "" },
+            put_link_jsonCredentialsType: { value: "str" },
+            delete_link_scope: { value: "" },
+            delete_link_scopeType: { value: "str" },
+            delete_link_name: { value: "" },
+            delete_link_nameType: { value: "str" },
+            name: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'couchbase-icon.png',
+        label: function () {
+            return this.name || this.method || "Analytics Links API";
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+            var selectedMethod = $('#node-input-method option:selected');
+            if (!selectedMethod.val()) {
+                var methods = $('#node-input-method').children();
+                var firstMethod = methods.first();
+                $('#node-input-method').val(firstMethod.val());
+            }
+
+            var showParameters = function () {
+
+                $("#node-input-post_alt_dataverse").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_dataverseType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_dataverse").hide();
+
+                $("#node-input-post_alt_name").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_nameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_name").hide();
+
+
+                $("#post_alt_type").hide();
+
+                $("#node-input-post_alt_hostname").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_hostnameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_hostname").hide();
+
+
+                $("#post_alt_encryption").hide();
+
+                $("#node-input-post_alt_username").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_usernameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_username").hide();
+
+                $("#node-input-post_alt_password").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_passwordType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_password").hide();
+
+                $("#node-input-post_alt_certificate").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_certificateType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_certificate").hide();
+
+                $("#node-input-post_alt_clientCertificate").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_clientCertificateType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_clientCertificate").hide();
+
+                $("#node-input-post_alt_clientKey").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_clientKeyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_clientKey").hide();
+
+                $("#node-input-post_alt_accessKeyId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_accessKeyIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_accessKeyId").hide();
+
+                $("#node-input-post_alt_secretAccessKey").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_secretAccessKeyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_secretAccessKey").hide();
+
+                $("#node-input-post_alt_sessionToken").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_sessionTokenType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_sessionToken").hide();
+
+                $("#node-input-post_alt_region").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_regionType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_region").hide();
+
+                $("#node-input-post_alt_serviceEndpoint").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_serviceEndpointType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_serviceEndpoint").hide();
+
+                $("#node-input-post_alt_accountName").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_accountNameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_accountName").hide();
+
+                $("#node-input-post_alt_accountKey").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_accountKeyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_accountKey").hide();
+
+                $("#node-input-post_alt_sharedAccessSignature").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_sharedAccessSignatureType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_sharedAccessSignature").hide();
+
+                $("#node-input-post_alt_managedIdentityId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_managedIdentityIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_managedIdentityId").hide();
+
+                $("#node-input-post_alt_clientId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_clientIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_clientId").hide();
+
+                $("#node-input-post_alt_tenantId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_tenantIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_tenantId").hide();
+
+                $("#node-input-post_alt_clientSecret").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_clientSecretType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_clientSecret").hide();
+
+                $("#node-input-post_alt_clientCertificatePassword").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_clientCertificatePasswordType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_clientCertificatePassword").hide();
+
+                $("#node-input-post_alt_endpoint").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_endpointType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_endpoint").hide();
+
+
+                $("#post_alt_applicationDefaultCredentials").hide();
+
+                $("#node-input-post_alt_jsonCredentials").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_alt_jsonCredentialsType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_alt_jsonCredentials").hide();
+
+                $("#node-input-get_all_dataverse").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_all_dataverseType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_all_dataverse").hide();
+
+                $("#node-input-get_all_name").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_all_nameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_all_name").hide();
+
+
+                $("#get_all_type").hide();
+
+                $("#node-input-put_alt_dataverse").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_dataverseType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_dataverse").hide();
+
+                $("#node-input-put_alt_name").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_nameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_name").hide();
+
+
+                $("#put_alt_type").hide();
+
+                $("#node-input-put_alt_hostname").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_hostnameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_hostname").hide();
+
+
+                $("#put_alt_encryption").hide();
+
+                $("#node-input-put_alt_username").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_usernameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_username").hide();
+
+                $("#node-input-put_alt_password").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_passwordType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_password").hide();
+
+                $("#node-input-put_alt_certificate").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_certificateType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_certificate").hide();
+
+                $("#node-input-put_alt_clientCertificate").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_clientCertificateType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_clientCertificate").hide();
+
+                $("#node-input-put_alt_clientKey").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_clientKeyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_clientKey").hide();
+
+                $("#node-input-put_alt_accessKeyId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_accessKeyIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_accessKeyId").hide();
+
+                $("#node-input-put_alt_secretAccessKey").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_secretAccessKeyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_secretAccessKey").hide();
+
+                $("#node-input-put_alt_sessionToken").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_sessionTokenType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_sessionToken").hide();
+
+                $("#node-input-put_alt_region").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_regionType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_region").hide();
+
+                $("#node-input-put_alt_serviceEndpoint").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_serviceEndpointType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_serviceEndpoint").hide();
+
+                $("#node-input-put_alt_accountName").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_accountNameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_accountName").hide();
+
+                $("#node-input-put_alt_accountKey").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_accountKeyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_accountKey").hide();
+
+                $("#node-input-put_alt_sharedAccessSignature").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_sharedAccessSignatureType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_sharedAccessSignature").hide();
+
+                $("#node-input-put_alt_managedIdentityId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_managedIdentityIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_managedIdentityId").hide();
+
+                $("#node-input-put_alt_clientId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_clientIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_clientId").hide();
+
+                $("#node-input-put_alt_tenantId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_tenantIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_tenantId").hide();
+
+                $("#node-input-put_alt_clientSecret").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_clientSecretType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_clientSecret").hide();
+
+                $("#node-input-put_alt_clientCertificatePassword").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_clientCertificatePasswordType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_clientCertificatePassword").hide();
+
+                $("#node-input-put_alt_endpoint").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_endpointType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_endpoint").hide();
+
+
+                $("#put_alt_applicationDefaultCredentials").hide();
+
+                $("#node-input-put_alt_jsonCredentials").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_alt_jsonCredentialsType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_alt_jsonCredentials").hide();
+
+                $("#node-input-delete_alt_dataverse").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-delete_alt_dataverseType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#delete_alt_dataverse").hide();
+
+                $("#node-input-delete_alt_name").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-delete_alt_nameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#delete_alt_name").hide();
+
+                $("#node-input-get_scope_scope").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_scope_scopeType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_scope_scope").hide();
+
+
+                $("#get_scope_type").hide();
+
+                $("#node-input-post_link_scope").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_scopeType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_scope").hide();
+
+                $("#node-input-post_link_name").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_nameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_name").hide();
+
+
+                $("#post_link_type").hide();
+
+                $("#node-input-post_link_hostname").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_hostnameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_hostname").hide();
+
+
+                $("#post_link_encryption").hide();
+
+                $("#node-input-post_link_username").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_usernameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_username").hide();
+
+                $("#node-input-post_link_password").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_passwordType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_password").hide();
+
+                $("#node-input-post_link_certificate").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_certificateType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_certificate").hide();
+
+                $("#node-input-post_link_clientCertificate").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_clientCertificateType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_clientCertificate").hide();
+
+                $("#node-input-post_link_clientKey").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_clientKeyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_clientKey").hide();
+
+                $("#node-input-post_link_accessKeyId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_accessKeyIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_accessKeyId").hide();
+
+                $("#node-input-post_link_secretAccessKey").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_secretAccessKeyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_secretAccessKey").hide();
+
+                $("#node-input-post_link_sessionToken").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_sessionTokenType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_sessionToken").hide();
+
+                $("#node-input-post_link_region").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_regionType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_region").hide();
+
+                $("#node-input-post_link_serviceEndpoint").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_serviceEndpointType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_serviceEndpoint").hide();
+
+                $("#node-input-post_link_accountName").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_accountNameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_accountName").hide();
+
+                $("#node-input-post_link_accountKey").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_accountKeyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_accountKey").hide();
+
+                $("#node-input-post_link_sharedAccessSignature").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_sharedAccessSignatureType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_sharedAccessSignature").hide();
+
+                $("#node-input-post_link_managedIdentityId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_managedIdentityIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_managedIdentityId").hide();
+
+                $("#node-input-post_link_clientId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_clientIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_clientId").hide();
+
+                $("#node-input-post_link_tenantId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_tenantIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_tenantId").hide();
+
+                $("#node-input-post_link_clientSecret").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_clientSecretType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_clientSecret").hide();
+
+                $("#node-input-post_link_clientCertificatePassword").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_clientCertificatePasswordType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_clientCertificatePassword").hide();
+
+                $("#node-input-post_link_endpoint").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_endpointType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_endpoint").hide();
+
+
+                $("#post_link_applicationDefaultCredentials").hide();
+
+                $("#node-input-post_link_jsonCredentials").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-post_link_jsonCredentialsType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#post_link_jsonCredentials").hide();
+
+                $("#node-input-get_link_scope").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_link_scopeType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_link_scope").hide();
+
+                $("#node-input-get_link_name").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-get_link_nameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#get_link_name").hide();
+
+
+                $("#get_link_type").hide();
+
+                $("#node-input-put_link_scope").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_scopeType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_scope").hide();
+
+                $("#node-input-put_link_name").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_nameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_name").hide();
+
+
+                $("#put_link_type").hide();
+
+                $("#node-input-put_link_hostname").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_hostnameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_hostname").hide();
+
+
+                $("#put_link_encryption").hide();
+
+                $("#node-input-put_link_username").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_usernameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_username").hide();
+
+                $("#node-input-put_link_password").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_passwordType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_password").hide();
+
+                $("#node-input-put_link_certificate").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_certificateType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_certificate").hide();
+
+                $("#node-input-put_link_clientCertificate").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_clientCertificateType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_clientCertificate").hide();
+
+                $("#node-input-put_link_clientKey").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_clientKeyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_clientKey").hide();
+
+                $("#node-input-put_link_accessKeyId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_accessKeyIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_accessKeyId").hide();
+
+                $("#node-input-put_link_secretAccessKey").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_secretAccessKeyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_secretAccessKey").hide();
+
+                $("#node-input-put_link_sessionToken").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_sessionTokenType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_sessionToken").hide();
+
+                $("#node-input-put_link_region").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_regionType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_region").hide();
+
+                $("#node-input-put_link_serviceEndpoint").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_serviceEndpointType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_serviceEndpoint").hide();
+
+                $("#node-input-put_link_accountName").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_accountNameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_accountName").hide();
+
+                $("#node-input-put_link_accountKey").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_accountKeyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_accountKey").hide();
+
+                $("#node-input-put_link_sharedAccessSignature").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_sharedAccessSignatureType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_sharedAccessSignature").hide();
+
+                $("#node-input-put_link_managedIdentityId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_managedIdentityIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_managedIdentityId").hide();
+
+                $("#node-input-put_link_clientId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_clientIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_clientId").hide();
+
+                $("#node-input-put_link_tenantId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_tenantIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_tenantId").hide();
+
+                $("#node-input-put_link_clientSecret").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_clientSecretType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_clientSecret").hide();
+
+                $("#node-input-put_link_clientCertificatePassword").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_clientCertificatePasswordType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_clientCertificatePassword").hide();
+
+                $("#node-input-put_link_endpoint").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_endpointType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_endpoint").hide();
+
+
+                $("#put_link_applicationDefaultCredentials").hide();
+
+                $("#node-input-put_link_jsonCredentials").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-put_link_jsonCredentialsType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#put_link_jsonCredentials").hide();
+
+                $("#node-input-delete_link_scope").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-delete_link_scopeType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#delete_link_scope").hide();
+
+                $("#node-input-delete_link_name").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-delete_link_nameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#delete_link_name").hide();
+
+                $("#optional-parameters").hide();
+                $("#optional-parameters-label").hide();
+                if ($("#node-input-method").val() === 'post_alt') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+
+                }
+                if ($("#node-input-method").val() === 'get_all') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+
+                }
+                if ($("#node-input-method").val() === 'put_alt') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+
+                }
+                if ($("#node-input-method").val() === 'delete_alt') {
+
+                }
+                if ($("#node-input-method").val() === 'get_scope') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+
+                }
+                if ($("#node-input-method").val() === 'post_link') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+
+                }
+                if ($("#node-input-method").val() === 'get_link') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+
+                }
+                if ($("#node-input-method").val() === 'put_link') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+
+                }
+                if ($("#node-input-method").val() === 'delete_link') {
+
+                }
+
+                if ($("#optional-parameters").prop('checked')) {
+                    if ($("#node-input-method").val() === 'post_alt') {
+
+                        $("#post_alt_dataverse").show();
+
+                        $("#post_alt_name").show();
+
+                        $("#post_alt_type").show();
+
+                        $("#post_alt_hostname").show();
+
+                        $("#post_alt_encryption").show();
+
+                        $("#post_alt_username").show();
+
+                        $("#post_alt_password").show();
+
+                        $("#post_alt_certificate").show();
+
+                        $("#post_alt_clientCertificate").show();
+
+                        $("#post_alt_clientKey").show();
+
+                        $("#post_alt_accessKeyId").show();
+
+                        $("#post_alt_secretAccessKey").show();
+
+                        $("#post_alt_sessionToken").show();
+
+                        $("#post_alt_region").show();
+
+                        $("#post_alt_serviceEndpoint").show();
+
+                        $("#post_alt_accountName").show();
+
+                        $("#post_alt_accountKey").show();
+
+                        $("#post_alt_sharedAccessSignature").show();
+
+                        $("#post_alt_managedIdentityId").show();
+
+                        $("#post_alt_clientId").show();
+
+                        $("#post_alt_tenantId").show();
+
+                        $("#post_alt_clientSecret").show();
+
+                        $("#post_alt_clientCertificatePassword").show();
+
+                        $("#post_alt_endpoint").show();
+
+                        $("#post_alt_applicationDefaultCredentials").show();
+
+                        $("#post_alt_jsonCredentials").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_all') {
+
+                        $("#get_all_dataverse").show();
+
+                        $("#get_all_name").show();
+
+                        $("#get_all_type").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'put_alt') {
+
+                        $("#put_alt_dataverse").show();
+
+                        $("#put_alt_name").show();
+
+                        $("#put_alt_type").show();
+
+                        $("#put_alt_hostname").show();
+
+                        $("#put_alt_encryption").show();
+
+                        $("#put_alt_username").show();
+
+                        $("#put_alt_password").show();
+
+                        $("#put_alt_certificate").show();
+
+                        $("#put_alt_clientCertificate").show();
+
+                        $("#put_alt_clientKey").show();
+
+                        $("#put_alt_accessKeyId").show();
+
+                        $("#put_alt_secretAccessKey").show();
+
+                        $("#put_alt_sessionToken").show();
+
+                        $("#put_alt_region").show();
+
+                        $("#put_alt_serviceEndpoint").show();
+
+                        $("#put_alt_accountName").show();
+
+                        $("#put_alt_accountKey").show();
+
+                        $("#put_alt_sharedAccessSignature").show();
+
+                        $("#put_alt_managedIdentityId").show();
+
+                        $("#put_alt_clientId").show();
+
+                        $("#put_alt_tenantId").show();
+
+                        $("#put_alt_clientSecret").show();
+
+                        $("#put_alt_clientCertificatePassword").show();
+
+                        $("#put_alt_endpoint").show();
+
+                        $("#put_alt_applicationDefaultCredentials").show();
+
+                        $("#put_alt_jsonCredentials").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'delete_alt') {
+
+                        $("#delete_alt_dataverse").show();
+
+                        $("#delete_alt_name").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_scope') {
+
+                        $("#get_scope_scope").show();
+
+                        $("#get_scope_type").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'post_link') {
+
+                        $("#post_link_scope").show();
+
+                        $("#post_link_name").show();
+
+                        $("#post_link_type").show();
+
+                        $("#post_link_hostname").show();
+
+                        $("#post_link_encryption").show();
+
+                        $("#post_link_username").show();
+
+                        $("#post_link_password").show();
+
+                        $("#post_link_certificate").show();
+
+                        $("#post_link_clientCertificate").show();
+
+                        $("#post_link_clientKey").show();
+
+                        $("#post_link_accessKeyId").show();
+
+                        $("#post_link_secretAccessKey").show();
+
+                        $("#post_link_sessionToken").show();
+
+                        $("#post_link_region").show();
+
+                        $("#post_link_serviceEndpoint").show();
+
+                        $("#post_link_accountName").show();
+
+                        $("#post_link_accountKey").show();
+
+                        $("#post_link_sharedAccessSignature").show();
+
+                        $("#post_link_managedIdentityId").show();
+
+                        $("#post_link_clientId").show();
+
+                        $("#post_link_tenantId").show();
+
+                        $("#post_link_clientSecret").show();
+
+                        $("#post_link_clientCertificatePassword").show();
+
+                        $("#post_link_endpoint").show();
+
+                        $("#post_link_applicationDefaultCredentials").show();
+
+                        $("#post_link_jsonCredentials").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_link') {
+
+                        $("#get_link_scope").show();
+
+                        $("#get_link_name").show();
+
+                        $("#get_link_type").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'put_link') {
+
+                        $("#put_link_scope").show();
+
+                        $("#put_link_name").show();
+
+                        $("#put_link_type").show();
+
+                        $("#put_link_hostname").show();
+
+                        $("#put_link_encryption").show();
+
+                        $("#put_link_username").show();
+
+                        $("#put_link_password").show();
+
+                        $("#put_link_certificate").show();
+
+                        $("#put_link_clientCertificate").show();
+
+                        $("#put_link_clientKey").show();
+
+                        $("#put_link_accessKeyId").show();
+
+                        $("#put_link_secretAccessKey").show();
+
+                        $("#put_link_sessionToken").show();
+
+                        $("#put_link_region").show();
+
+                        $("#put_link_serviceEndpoint").show();
+
+                        $("#put_link_accountName").show();
+
+                        $("#put_link_accountKey").show();
+
+                        $("#put_link_sharedAccessSignature").show();
+
+                        $("#put_link_managedIdentityId").show();
+
+                        $("#put_link_clientId").show();
+
+                        $("#put_link_tenantId").show();
+
+                        $("#put_link_clientSecret").show();
+
+                        $("#put_link_clientCertificatePassword").show();
+
+                        $("#put_link_endpoint").show();
+
+                        $("#put_link_applicationDefaultCredentials").show();
+
+                        $("#put_link_jsonCredentials").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'delete_link') {
+
+                        $("#delete_link_scope").show();
+
+                        $("#delete_link_name").show();
+
+                    }
+                } else {
+                    if ($("#node-input-method").val() === 'post_alt') {
+
+                        $("#post_alt_dataverse").show();
+
+                        $("#post_alt_name").show();
+
+                        $("#post_alt_type").show();
+
+                        $("#post_alt_hostname").show();
+
+                        $("#post_alt_encryption").show();
+
+                        $("#post_alt_accessKeyId").show();
+
+                        $("#post_alt_secretAccessKey").show();
+
+                        $("#post_alt_region").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_all') {
+
+                    }
+                    if ($("#node-input-method").val() === 'put_alt') {
+
+                        $("#put_alt_dataverse").show();
+
+                        $("#put_alt_name").show();
+
+                        $("#put_alt_hostname").show();
+
+                        $("#put_alt_encryption").show();
+
+                        $("#put_alt_accessKeyId").show();
+
+                        $("#put_alt_secretAccessKey").show();
+
+                        $("#put_alt_region").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'delete_alt') {
+
+                        $("#delete_alt_dataverse").show();
+
+                        $("#delete_alt_name").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_scope') {
+
+                        $("#get_scope_scope").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'post_link') {
+
+                        $("#post_link_scope").show();
+
+                        $("#post_link_name").show();
+
+                        $("#post_link_type").show();
+
+                        $("#post_link_hostname").show();
+
+                        $("#post_link_encryption").show();
+
+                        $("#post_link_accessKeyId").show();
+
+                        $("#post_link_secretAccessKey").show();
+
+                        $("#post_link_region").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'get_link') {
+
+                        $("#get_link_scope").show();
+
+                        $("#get_link_name").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'put_link') {
+
+                        $("#put_link_scope").show();
+
+                        $("#put_link_name").show();
+
+                        $("#put_link_hostname").show();
+
+                        $("#put_link_encryption").show();
+
+                        $("#put_link_accessKeyId").show();
+
+                        $("#put_link_secretAccessKey").show();
+
+                        $("#put_link_region").show();
+
+                    }
+                    if ($("#node-input-method").val() === 'delete_link') {
+
+                        $("#delete_link_scope").show();
+
+                        $("#delete_link_name").show();
+
+                    }
+                }
+            };
+
+            $("#node-input-method").change(function () {
+                showParameters();
+            });
+
+            $("#optional-parameters").change(function () {
+                showParameters();
+            });
+
+            var selected_post_alt_type = $('#node-input-post_alt_type option:selected');
+            if (!selected_post_alt_type.val()) {
+                var children_post_alt_type = $('#node-input-post_alt_type').children();
+                var first_post_alt_type = children_post_alt_type.first();
+                $('#node-input-post_alt_type').val(first_post_alt_type.val());
+            }
+            var selected_post_alt_encryption = $('#node-input-post_alt_encryption option:selected');
+            if (!selected_post_alt_encryption.val()) {
+                var children_post_alt_encryption = $('#node-input-post_alt_encryption').children();
+                var first_post_alt_encryption = children_post_alt_encryption.first();
+                $('#node-input-post_alt_encryption').val(first_post_alt_encryption.val());
+            }
+            var selected_post_alt_applicationDefaultCredentials = $('#node-input-post_alt_applicationDefaultCredentials option:selected');
+            if (!selected_post_alt_applicationDefaultCredentials.val()) {
+                var children_post_alt_applicationDefaultCredentials = $('#node-input-post_alt_applicationDefaultCredentials').children();
+                var first_post_alt_applicationDefaultCredentials = children_post_alt_applicationDefaultCredentials.first();
+                $('#node-input-post_alt_applicationDefaultCredentials').val(first_post_alt_applicationDefaultCredentials.val());
+            }
+            var selected_get_all_type = $('#node-input-get_all_type option:selected');
+            if (!selected_get_all_type.val()) {
+                var children_get_all_type = $('#node-input-get_all_type').children();
+                var first_get_all_type = children_get_all_type.first();
+                $('#node-input-get_all_type').val(first_get_all_type.val());
+            }
+            var selected_put_alt_type = $('#node-input-put_alt_type option:selected');
+            if (!selected_put_alt_type.val()) {
+                var children_put_alt_type = $('#node-input-put_alt_type').children();
+                var first_put_alt_type = children_put_alt_type.first();
+                $('#node-input-put_alt_type').val(first_put_alt_type.val());
+            }
+            var selected_put_alt_encryption = $('#node-input-put_alt_encryption option:selected');
+            if (!selected_put_alt_encryption.val()) {
+                var children_put_alt_encryption = $('#node-input-put_alt_encryption').children();
+                var first_put_alt_encryption = children_put_alt_encryption.first();
+                $('#node-input-put_alt_encryption').val(first_put_alt_encryption.val());
+            }
+            var selected_put_alt_applicationDefaultCredentials = $('#node-input-put_alt_applicationDefaultCredentials option:selected');
+            if (!selected_put_alt_applicationDefaultCredentials.val()) {
+                var children_put_alt_applicationDefaultCredentials = $('#node-input-put_alt_applicationDefaultCredentials').children();
+                var first_put_alt_applicationDefaultCredentials = children_put_alt_applicationDefaultCredentials.first();
+                $('#node-input-put_alt_applicationDefaultCredentials').val(first_put_alt_applicationDefaultCredentials.val());
+            }
+            var selected_get_scope_type = $('#node-input-get_scope_type option:selected');
+            if (!selected_get_scope_type.val()) {
+                var children_get_scope_type = $('#node-input-get_scope_type').children();
+                var first_get_scope_type = children_get_scope_type.first();
+                $('#node-input-get_scope_type').val(first_get_scope_type.val());
+            }
+            var selected_post_link_type = $('#node-input-post_link_type option:selected');
+            if (!selected_post_link_type.val()) {
+                var children_post_link_type = $('#node-input-post_link_type').children();
+                var first_post_link_type = children_post_link_type.first();
+                $('#node-input-post_link_type').val(first_post_link_type.val());
+            }
+            var selected_post_link_encryption = $('#node-input-post_link_encryption option:selected');
+            if (!selected_post_link_encryption.val()) {
+                var children_post_link_encryption = $('#node-input-post_link_encryption').children();
+                var first_post_link_encryption = children_post_link_encryption.first();
+                $('#node-input-post_link_encryption').val(first_post_link_encryption.val());
+            }
+            var selected_post_link_applicationDefaultCredentials = $('#node-input-post_link_applicationDefaultCredentials option:selected');
+            if (!selected_post_link_applicationDefaultCredentials.val()) {
+                var children_post_link_applicationDefaultCredentials = $('#node-input-post_link_applicationDefaultCredentials').children();
+                var first_post_link_applicationDefaultCredentials = children_post_link_applicationDefaultCredentials.first();
+                $('#node-input-post_link_applicationDefaultCredentials').val(first_post_link_applicationDefaultCredentials.val());
+            }
+            var selected_get_link_type = $('#node-input-get_link_type option:selected');
+            if (!selected_get_link_type.val()) {
+                var children_get_link_type = $('#node-input-get_link_type').children();
+                var first_get_link_type = children_get_link_type.first();
+                $('#node-input-get_link_type').val(first_get_link_type.val());
+            }
+            var selected_put_link_type = $('#node-input-put_link_type option:selected');
+            if (!selected_put_link_type.val()) {
+                var children_put_link_type = $('#node-input-put_link_type').children();
+                var first_put_link_type = children_put_link_type.first();
+                $('#node-input-put_link_type').val(first_put_link_type.val());
+            }
+            var selected_put_link_encryption = $('#node-input-put_link_encryption option:selected');
+            if (!selected_put_link_encryption.val()) {
+                var children_put_link_encryption = $('#node-input-put_link_encryption').children();
+                var first_put_link_encryption = children_put_link_encryption.first();
+                $('#node-input-put_link_encryption').val(first_put_link_encryption.val());
+            }
+            var selected_put_link_applicationDefaultCredentials = $('#node-input-put_link_applicationDefaultCredentials option:selected');
+            if (!selected_put_link_applicationDefaultCredentials.val()) {
+                var children_put_link_applicationDefaultCredentials = $('#node-input-put_link_applicationDefaultCredentials').children();
+                var first_put_link_applicationDefaultCredentials = children_put_link_applicationDefaultCredentials.first();
+                $('#node-input-put_link_applicationDefaultCredentials').val(first_put_link_applicationDefaultCredentials.val());
+            }
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="analytics-links-rest-api">
+    <div class="form-row">
+        <label for="node-input-service"><i class="fa fa-cloud"></i> <span data-i18n="AnalyticsLinksRestApi.label.service"></span></label>
+        <input type="text" id="node-input-service">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-method"><i class="fa fa-tasks"></i> <span data-i18n="AnalyticsLinksRestApi.label.method"></span></label>
+        <select id="node-input-method">
+            <option value="post_alt" data-i18n="AnalyticsLinksRestApi.parameters.post_alt"></option>
+            <option value="get_all" data-i18n="AnalyticsLinksRestApi.parameters.get_all"></option>
+            <option value="put_alt" data-i18n="AnalyticsLinksRestApi.parameters.put_alt"></option>
+            <option value="delete_alt" data-i18n="AnalyticsLinksRestApi.parameters.delete_alt"></option>
+            <option value="get_scope" data-i18n="AnalyticsLinksRestApi.parameters.get_scope"></option>
+            <option value="post_link" data-i18n="AnalyticsLinksRestApi.parameters.post_link"></option>
+            <option value="get_link" data-i18n="AnalyticsLinksRestApi.parameters.get_link"></option>
+            <option value="put_link" data-i18n="AnalyticsLinksRestApi.parameters.put_link"></option>
+            <option value="delete_link" data-i18n="AnalyticsLinksRestApi.parameters.delete_link"></option>
+        </select>
+        &nbsp;
+        <input type="checkbox" id="optional-parameters" style="margin-left: 10px; vertical-align: text-bottom; width: auto;">
+        <label for="optional-parameters" id="optional-parameters-label" style="width: auto;"> <span data-i18n="AnalyticsLinksRestApi.parameters.optionalParameters"></span></label>
+    </div>
+
+    <div class="form-row" id="post_alt_dataverse">
+        <label for="node-input-post_alt_dataverse"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.dataverse"></span></label>
+
+        <input type="text" id="node-input-post_alt_dataverse" placeholder="The name of the Analytics scope containing the link.
+
+With this parameter, the scope name may only contain a single identifier.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_dataverseType">
+    </div>
+
+    <div class="form-row" id="post_alt_name">
+        <label for="node-input-post_alt_name"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.name"></span></label>
+
+        <input type="text" id="node-input-post_alt_name" placeholder="The name of the link." style="width:70%">
+        <input type="hidden" id="node-input-post_alt_nameType">
+    </div>
+
+    <div class="form-row" id="post_alt_type">
+        <label for="node-input-post_alt_type"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.type"></span></label>
+        <select id="node-input-post_alt_type">
+            <option value="couchbase">couchbase</option>
+            <option value="s3">s3</option>
+            <option value="azureblob">azureblob</option>
+            <option value="gcs">gcs</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="post_alt_hostname">
+        <label for="node-input-post_alt_hostname"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.hostname"></span></label>
+
+        <input type="text" id="node-input-post_alt_hostname" placeholder="For Couchbase links only. The remote hostname.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_hostnameType">
+    </div>
+
+    <div class="form-row" id="post_alt_encryption">
+        <label for="node-input-post_alt_encryption"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.encryption"></span></label>
+        <select id="node-input-post_alt_encryption">
+            <option value="none">none</option>
+            <option value="half">half</option>
+            <option value="full">full</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="post_alt_username">
+        <label for="node-input-post_alt_username"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.username"></span></label>
+
+        <input type="text" id="node-input-post_alt_username" placeholder="For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_usernameType">
+    </div>
+
+    <div class="form-row" id="post_alt_password">
+        <label for="node-input-post_alt_password"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.password"></span></label>
+
+        <input type="text" id="node-input-post_alt_password" placeholder="For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_passwordType">
+    </div>
+
+    <div class="form-row" id="post_alt_certificate">
+        <label for="node-input-post_alt_certificate"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.certificate"></span></label>
+
+        <input type="text" id="node-input-post_alt_certificate" placeholder="For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.
+
+You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_certificateType">
+    </div>
+
+    <div class="form-row" id="post_alt_clientCertificate">
+        <label for="node-input-post_alt_clientCertificate"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientCertificate"></span></label>
+
+        <input type="text" id="node-input-post_alt_clientCertificate" placeholder="For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.
+
+For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_clientCertificateType">
+    </div>
+
+    <div class="form-row" id="post_alt_clientKey">
+        <label for="node-input-post_alt_clientKey"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientKey"></span></label>
+
+        <input type="text" id="node-input-post_alt_clientKey" placeholder="For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_clientKeyType">
+    </div>
+
+    <div class="form-row" id="post_alt_accessKeyId">
+        <label for="node-input-post_alt_accessKeyId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.accessKeyId"></span></label>
+
+        <input type="text" id="node-input-post_alt_accessKeyId" placeholder="For S3 links only. The Amazon S3 access key ID.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_accessKeyIdType">
+    </div>
+
+    <div class="form-row" id="post_alt_secretAccessKey">
+        <label for="node-input-post_alt_secretAccessKey"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.secretAccessKey"></span></label>
+
+        <input type="text" id="node-input-post_alt_secretAccessKey" placeholder="For S3 links only. The Amazon S3 secret access key.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_secretAccessKeyType">
+    </div>
+
+    <div class="form-row" id="post_alt_sessionToken">
+        <label for="node-input-post_alt_sessionToken"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.sessionToken"></span></label>
+
+        <input type="text" id="node-input-post_alt_sessionToken" placeholder="For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.
+
+Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_sessionTokenType">
+    </div>
+
+    <div class="form-row" id="post_alt_region">
+        <label for="node-input-post_alt_region"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.region"></span></label>
+
+        <input type="text" id="node-input-post_alt_region" placeholder="For S3 links only. The Amazon S3 region.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_regionType">
+    </div>
+
+    <div class="form-row" id="post_alt_serviceEndpoint">
+        <label for="node-input-post_alt_serviceEndpoint"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.serviceEndpoint"></span></label>
+
+        <input type="text" id="node-input-post_alt_serviceEndpoint" placeholder="For S3 links only. The Amazon S3 service endpoint.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_serviceEndpointType">
+    </div>
+
+    <div class="form-row" id="post_alt_accountName">
+        <label for="node-input-post_alt_accountName"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.accountName"></span></label>
+
+        <input type="text" id="node-input-post_alt_accountName" placeholder="For Azure Blob links only. The account name. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_accountNameType">
+    </div>
+
+    <div class="form-row" id="post_alt_accountKey">
+        <label for="node-input-post_alt_accountKey"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.accountKey"></span></label>
+
+        <input type="text" id="node-input-post_alt_accountKey" placeholder="For Azure Blob links only. The account key. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_accountKeyType">
+    </div>
+
+    <div class="form-row" id="post_alt_sharedAccessSignature">
+        <label for="node-input-post_alt_sharedAccessSignature"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.sharedAccessSignature"></span></label>
+
+        <input type="text" id="node-input-post_alt_sharedAccessSignature" placeholder="For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_sharedAccessSignatureType">
+    </div>
+
+    <div class="form-row" id="post_alt_managedIdentityId">
+        <label for="node-input-post_alt_managedIdentityId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.managedIdentityId"></span></label>
+
+        <input type="text" id="node-input-post_alt_managedIdentityId" placeholder="For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_managedIdentityIdType">
+    </div>
+
+    <div class="form-row" id="post_alt_clientId">
+        <label for="node-input-post_alt_clientId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientId"></span></label>
+
+        <input type="text" id="node-input-post_alt_clientId" placeholder="For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_clientIdType">
+    </div>
+
+    <div class="form-row" id="post_alt_tenantId">
+        <label for="node-input-post_alt_tenantId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.tenantId"></span></label>
+
+        <input type="text" id="node-input-post_alt_tenantId" placeholder="For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_tenantIdType">
+    </div>
+
+    <div class="form-row" id="post_alt_clientSecret">
+        <label for="node-input-post_alt_clientSecret"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientSecret"></span></label>
+
+        <input type="text" id="node-input-post_alt_clientSecret" placeholder="For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_clientSecretType">
+    </div>
+
+    <div class="form-row" id="post_alt_clientCertificatePassword">
+        <label for="node-input-post_alt_clientCertificatePassword"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientCertificatePassword"></span></label>
+
+        <input type="text" id="node-input-post_alt_clientCertificatePassword" placeholder="For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_clientCertificatePasswordType">
+    </div>
+
+    <div class="form-row" id="post_alt_endpoint">
+        <label for="node-input-post_alt_endpoint"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.endpoint"></span></label>
+
+        <input type="text" id="node-input-post_alt_endpoint" placeholder="For Azure Blob links and Google Cloud Storage links. The endpoint URI.
+
+Required for Azure Blob links; optional for Google Cloud Storage links.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_endpointType">
+    </div>
+
+    <div class="form-row" id="post_alt_applicationDefaultCredentials">
+        <label for="node-input-post_alt_applicationDefaultCredentials"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.applicationDefaultCredentials"></span></label>
+        <select id="node-input-post_alt_applicationDefaultCredentials">
+            <option value="true">true</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="post_alt_jsonCredentials">
+        <label for="node-input-post_alt_jsonCredentials"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.jsonCredentials"></span></label>
+
+        <input type="text" id="node-input-post_alt_jsonCredentials" placeholder="For Google Cloud Storage links only. The JSON credentials of the link.
+
+This parameter is not allowed if `applicationDefaultCredentials` is provided.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_alt_jsonCredentialsType">
+    </div>
+
+    <div class="form-row" id="get_all_dataverse">
+        <label for="node-input-get_all_dataverse"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.dataverse"></span></label>
+
+        <input type="text" id="node-input-get_all_dataverse" placeholder="The name of an Analytics scope. When this parameter is included, the request only returns information about links in the specified scope.
+
+With this parameter, the scope name may only contain a single identifier.
+
+This parameter is provided for backward compatibility. Note that it is deprecated, and will be removed in a future release.
+" style="width:70%">
+        <input type="hidden" id="node-input-get_all_dataverseType">
+    </div>
+
+    <div class="form-row" id="get_all_name">
+        <label for="node-input-get_all_name"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.name"></span></label>
+
+        <input type="text" id="node-input-get_all_name" placeholder="The name of a link. When this parameter is included, the request only returns information about the specified link. If specified, the `dataverse` parameter must be specified also.
+
+This parameter is provided for backward compatibility. Note that it is deprecated, and will be removed in a future release.
+" style="width:70%">
+        <input type="hidden" id="node-input-get_all_nameType">
+    </div>
+
+    <div class="form-row" id="get_all_type">
+        <label for="node-input-get_all_type"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.type"></span></label>
+        <select id="node-input-get_all_type">
+            <option value="couchbase">couchbase</option>
+            <option value="s3">s3</option>
+            <option value="azureblob">azureblob</option>
+            <option value="gcs">gcs</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="put_alt_dataverse">
+        <label for="node-input-put_alt_dataverse"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.dataverse"></span></label>
+
+        <input type="text" id="node-input-put_alt_dataverse" placeholder="The name of the Analytics scope containing the link.
+
+With this parameter, the scope name may only contain a single identifier.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_dataverseType">
+    </div>
+
+    <div class="form-row" id="put_alt_name">
+        <label for="node-input-put_alt_name"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.name"></span></label>
+
+        <input type="text" id="node-input-put_alt_name" placeholder="The name of the link." style="width:70%">
+        <input type="hidden" id="node-input-put_alt_nameType">
+    </div>
+
+    <div class="form-row" id="put_alt_type">
+        <label for="node-input-put_alt_type"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.type"></span></label>
+        <select id="node-input-put_alt_type">
+            <option value="couchbase">couchbase</option>
+            <option value="s3">s3</option>
+            <option value="azureblob">azureblob</option>
+            <option value="gcs">gcs</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="put_alt_hostname">
+        <label for="node-input-put_alt_hostname"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.hostname"></span></label>
+
+        <input type="text" id="node-input-put_alt_hostname" placeholder="For Couchbase links only. The remote hostname.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_hostnameType">
+    </div>
+
+    <div class="form-row" id="put_alt_encryption">
+        <label for="node-input-put_alt_encryption"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.encryption"></span></label>
+        <select id="node-input-put_alt_encryption">
+            <option value="none">none</option>
+            <option value="half">half</option>
+            <option value="full">full</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="put_alt_username">
+        <label for="node-input-put_alt_username"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.username"></span></label>
+
+        <input type="text" id="node-input-put_alt_username" placeholder="For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_usernameType">
+    </div>
+
+    <div class="form-row" id="put_alt_password">
+        <label for="node-input-put_alt_password"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.password"></span></label>
+
+        <input type="text" id="node-input-put_alt_password" placeholder="For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_passwordType">
+    </div>
+
+    <div class="form-row" id="put_alt_certificate">
+        <label for="node-input-put_alt_certificate"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.certificate"></span></label>
+
+        <input type="text" id="node-input-put_alt_certificate" placeholder="For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.
+
+You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_certificateType">
+    </div>
+
+    <div class="form-row" id="put_alt_clientCertificate">
+        <label for="node-input-put_alt_clientCertificate"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientCertificate"></span></label>
+
+        <input type="text" id="node-input-put_alt_clientCertificate" placeholder="For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.
+
+For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_clientCertificateType">
+    </div>
+
+    <div class="form-row" id="put_alt_clientKey">
+        <label for="node-input-put_alt_clientKey"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientKey"></span></label>
+
+        <input type="text" id="node-input-put_alt_clientKey" placeholder="For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_clientKeyType">
+    </div>
+
+    <div class="form-row" id="put_alt_accessKeyId">
+        <label for="node-input-put_alt_accessKeyId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.accessKeyId"></span></label>
+
+        <input type="text" id="node-input-put_alt_accessKeyId" placeholder="For S3 links only. The Amazon S3 access key ID.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_accessKeyIdType">
+    </div>
+
+    <div class="form-row" id="put_alt_secretAccessKey">
+        <label for="node-input-put_alt_secretAccessKey"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.secretAccessKey"></span></label>
+
+        <input type="text" id="node-input-put_alt_secretAccessKey" placeholder="For S3 links only. The Amazon S3 secret access key.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_secretAccessKeyType">
+    </div>
+
+    <div class="form-row" id="put_alt_sessionToken">
+        <label for="node-input-put_alt_sessionToken"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.sessionToken"></span></label>
+
+        <input type="text" id="node-input-put_alt_sessionToken" placeholder="For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.
+
+Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_sessionTokenType">
+    </div>
+
+    <div class="form-row" id="put_alt_region">
+        <label for="node-input-put_alt_region"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.region"></span></label>
+
+        <input type="text" id="node-input-put_alt_region" placeholder="For S3 links only. The Amazon S3 region.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_regionType">
+    </div>
+
+    <div class="form-row" id="put_alt_serviceEndpoint">
+        <label for="node-input-put_alt_serviceEndpoint"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.serviceEndpoint"></span></label>
+
+        <input type="text" id="node-input-put_alt_serviceEndpoint" placeholder="For S3 links only. The Amazon S3 service endpoint.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_serviceEndpointType">
+    </div>
+
+    <div class="form-row" id="put_alt_accountName">
+        <label for="node-input-put_alt_accountName"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.accountName"></span></label>
+
+        <input type="text" id="node-input-put_alt_accountName" placeholder="For Azure Blob links only. The account name. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_accountNameType">
+    </div>
+
+    <div class="form-row" id="put_alt_accountKey">
+        <label for="node-input-put_alt_accountKey"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.accountKey"></span></label>
+
+        <input type="text" id="node-input-put_alt_accountKey" placeholder="For Azure Blob links only. The account key. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_accountKeyType">
+    </div>
+
+    <div class="form-row" id="put_alt_sharedAccessSignature">
+        <label for="node-input-put_alt_sharedAccessSignature"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.sharedAccessSignature"></span></label>
+
+        <input type="text" id="node-input-put_alt_sharedAccessSignature" placeholder="For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_sharedAccessSignatureType">
+    </div>
+
+    <div class="form-row" id="put_alt_managedIdentityId">
+        <label for="node-input-put_alt_managedIdentityId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.managedIdentityId"></span></label>
+
+        <input type="text" id="node-input-put_alt_managedIdentityId" placeholder="For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_managedIdentityIdType">
+    </div>
+
+    <div class="form-row" id="put_alt_clientId">
+        <label for="node-input-put_alt_clientId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientId"></span></label>
+
+        <input type="text" id="node-input-put_alt_clientId" placeholder="For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_clientIdType">
+    </div>
+
+    <div class="form-row" id="put_alt_tenantId">
+        <label for="node-input-put_alt_tenantId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.tenantId"></span></label>
+
+        <input type="text" id="node-input-put_alt_tenantId" placeholder="For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_tenantIdType">
+    </div>
+
+    <div class="form-row" id="put_alt_clientSecret">
+        <label for="node-input-put_alt_clientSecret"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientSecret"></span></label>
+
+        <input type="text" id="node-input-put_alt_clientSecret" placeholder="For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_clientSecretType">
+    </div>
+
+    <div class="form-row" id="put_alt_clientCertificatePassword">
+        <label for="node-input-put_alt_clientCertificatePassword"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientCertificatePassword"></span></label>
+
+        <input type="text" id="node-input-put_alt_clientCertificatePassword" placeholder="For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_clientCertificatePasswordType">
+    </div>
+
+    <div class="form-row" id="put_alt_endpoint">
+        <label for="node-input-put_alt_endpoint"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.endpoint"></span></label>
+
+        <input type="text" id="node-input-put_alt_endpoint" placeholder="For Azure Blob links and Google Cloud Storage links. The endpoint URI.
+
+Required for Azure Blob links; optional for Google Cloud Storage links.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_endpointType">
+    </div>
+
+    <div class="form-row" id="put_alt_applicationDefaultCredentials">
+        <label for="node-input-put_alt_applicationDefaultCredentials"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.applicationDefaultCredentials"></span></label>
+        <select id="node-input-put_alt_applicationDefaultCredentials">
+            <option value="true">true</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="put_alt_jsonCredentials">
+        <label for="node-input-put_alt_jsonCredentials"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.jsonCredentials"></span></label>
+
+        <input type="text" id="node-input-put_alt_jsonCredentials" placeholder="For Google Cloud Storage links only. The JSON credentials of the link.
+
+This parameter is not allowed if `applicationDefaultCredentials` is provided.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_alt_jsonCredentialsType">
+    </div>
+
+    <div class="form-row" id="delete_alt_dataverse">
+        <label for="node-input-delete_alt_dataverse"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.dataverse"></span></label>
+
+        <input type="text" id="node-input-delete_alt_dataverse" placeholder="The name of the Analytics scope containing the link.
+
+With this parameter, the scope name may only contain a single identifier.
+" style="width:70%">
+        <input type="hidden" id="node-input-delete_alt_dataverseType">
+    </div>
+
+    <div class="form-row" id="delete_alt_name">
+        <label for="node-input-delete_alt_name"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.name"></span></label>
+
+        <input type="text" id="node-input-delete_alt_name" placeholder="The name of the link." style="width:70%">
+        <input type="hidden" id="node-input-delete_alt_nameType">
+    </div>
+
+    <div class="form-row" id="get_scope_scope">
+        <label for="node-input-get_scope_scope"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.scope"></span></label>
+
+        <input type="text" id="node-input-get_scope_scope" placeholder="The name of the Analytics scope.
+
+With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-get_scope_scopeType">
+    </div>
+
+    <div class="form-row" id="get_scope_type">
+        <label for="node-input-get_scope_type"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.type"></span></label>
+        <select id="node-input-get_scope_type">
+            <option value="couchbase">couchbase</option>
+            <option value="s3">s3</option>
+            <option value="azureblob">azureblob</option>
+            <option value="gcs">gcs</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="post_link_scope">
+        <label for="node-input-post_link_scope"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.scope"></span></label>
+
+        <input type="text" id="node-input-post_link_scope" placeholder="The name of the Analytics scope.
+
+With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_scopeType">
+    </div>
+
+    <div class="form-row" id="post_link_name">
+        <label for="node-input-post_link_name"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.name"></span></label>
+
+        <input type="text" id="node-input-post_link_name" placeholder="The name of the link." style="width:70%">
+        <input type="hidden" id="node-input-post_link_nameType">
+    </div>
+
+    <div class="form-row" id="post_link_type">
+        <label for="node-input-post_link_type"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.type"></span></label>
+        <select id="node-input-post_link_type">
+            <option value="couchbase">couchbase</option>
+            <option value="s3">s3</option>
+            <option value="azureblob">azureblob</option>
+            <option value="gcs">gcs</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="post_link_hostname">
+        <label for="node-input-post_link_hostname"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.hostname"></span></label>
+
+        <input type="text" id="node-input-post_link_hostname" placeholder="For Couchbase links only. The remote hostname.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_hostnameType">
+    </div>
+
+    <div class="form-row" id="post_link_encryption">
+        <label for="node-input-post_link_encryption"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.encryption"></span></label>
+        <select id="node-input-post_link_encryption">
+            <option value="none">none</option>
+            <option value="half">half</option>
+            <option value="full">full</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="post_link_username">
+        <label for="node-input-post_link_username"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.username"></span></label>
+
+        <input type="text" id="node-input-post_link_username" placeholder="For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_usernameType">
+    </div>
+
+    <div class="form-row" id="post_link_password">
+        <label for="node-input-post_link_password"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.password"></span></label>
+
+        <input type="text" id="node-input-post_link_password" placeholder="For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_passwordType">
+    </div>
+
+    <div class="form-row" id="post_link_certificate">
+        <label for="node-input-post_link_certificate"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.certificate"></span></label>
+
+        <input type="text" id="node-input-post_link_certificate" placeholder="For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.
+
+You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_certificateType">
+    </div>
+
+    <div class="form-row" id="post_link_clientCertificate">
+        <label for="node-input-post_link_clientCertificate"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientCertificate"></span></label>
+
+        <input type="text" id="node-input-post_link_clientCertificate" placeholder="For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.
+
+For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_clientCertificateType">
+    </div>
+
+    <div class="form-row" id="post_link_clientKey">
+        <label for="node-input-post_link_clientKey"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientKey"></span></label>
+
+        <input type="text" id="node-input-post_link_clientKey" placeholder="For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_clientKeyType">
+    </div>
+
+    <div class="form-row" id="post_link_accessKeyId">
+        <label for="node-input-post_link_accessKeyId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.accessKeyId"></span></label>
+
+        <input type="text" id="node-input-post_link_accessKeyId" placeholder="For S3 links only. The Amazon S3 access key ID.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_accessKeyIdType">
+    </div>
+
+    <div class="form-row" id="post_link_secretAccessKey">
+        <label for="node-input-post_link_secretAccessKey"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.secretAccessKey"></span></label>
+
+        <input type="text" id="node-input-post_link_secretAccessKey" placeholder="For S3 links only. The Amazon S3 secret access key.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_secretAccessKeyType">
+    </div>
+
+    <div class="form-row" id="post_link_sessionToken">
+        <label for="node-input-post_link_sessionToken"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.sessionToken"></span></label>
+
+        <input type="text" id="node-input-post_link_sessionToken" placeholder="For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.
+
+Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_sessionTokenType">
+    </div>
+
+    <div class="form-row" id="post_link_region">
+        <label for="node-input-post_link_region"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.region"></span></label>
+
+        <input type="text" id="node-input-post_link_region" placeholder="For S3 links only. The Amazon S3 region.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_regionType">
+    </div>
+
+    <div class="form-row" id="post_link_serviceEndpoint">
+        <label for="node-input-post_link_serviceEndpoint"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.serviceEndpoint"></span></label>
+
+        <input type="text" id="node-input-post_link_serviceEndpoint" placeholder="For S3 links only. The Amazon S3 service endpoint.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_serviceEndpointType">
+    </div>
+
+    <div class="form-row" id="post_link_accountName">
+        <label for="node-input-post_link_accountName"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.accountName"></span></label>
+
+        <input type="text" id="node-input-post_link_accountName" placeholder="For Azure Blob links only. The account name. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_accountNameType">
+    </div>
+
+    <div class="form-row" id="post_link_accountKey">
+        <label for="node-input-post_link_accountKey"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.accountKey"></span></label>
+
+        <input type="text" id="node-input-post_link_accountKey" placeholder="For Azure Blob links only. The account key. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_accountKeyType">
+    </div>
+
+    <div class="form-row" id="post_link_sharedAccessSignature">
+        <label for="node-input-post_link_sharedAccessSignature"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.sharedAccessSignature"></span></label>
+
+        <input type="text" id="node-input-post_link_sharedAccessSignature" placeholder="For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_sharedAccessSignatureType">
+    </div>
+
+    <div class="form-row" id="post_link_managedIdentityId">
+        <label for="node-input-post_link_managedIdentityId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.managedIdentityId"></span></label>
+
+        <input type="text" id="node-input-post_link_managedIdentityId" placeholder="For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_managedIdentityIdType">
+    </div>
+
+    <div class="form-row" id="post_link_clientId">
+        <label for="node-input-post_link_clientId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientId"></span></label>
+
+        <input type="text" id="node-input-post_link_clientId" placeholder="For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_clientIdType">
+    </div>
+
+    <div class="form-row" id="post_link_tenantId">
+        <label for="node-input-post_link_tenantId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.tenantId"></span></label>
+
+        <input type="text" id="node-input-post_link_tenantId" placeholder="For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_tenantIdType">
+    </div>
+
+    <div class="form-row" id="post_link_clientSecret">
+        <label for="node-input-post_link_clientSecret"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientSecret"></span></label>
+
+        <input type="text" id="node-input-post_link_clientSecret" placeholder="For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_clientSecretType">
+    </div>
+
+    <div class="form-row" id="post_link_clientCertificatePassword">
+        <label for="node-input-post_link_clientCertificatePassword"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientCertificatePassword"></span></label>
+
+        <input type="text" id="node-input-post_link_clientCertificatePassword" placeholder="For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_clientCertificatePasswordType">
+    </div>
+
+    <div class="form-row" id="post_link_endpoint">
+        <label for="node-input-post_link_endpoint"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.endpoint"></span></label>
+
+        <input type="text" id="node-input-post_link_endpoint" placeholder="For Azure Blob links and Google Cloud Storage links. The endpoint URI.
+
+Required for Azure Blob links; optional for Google Cloud Storage links.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_endpointType">
+    </div>
+
+    <div class="form-row" id="post_link_applicationDefaultCredentials">
+        <label for="node-input-post_link_applicationDefaultCredentials"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.applicationDefaultCredentials"></span></label>
+        <select id="node-input-post_link_applicationDefaultCredentials">
+            <option value="true">true</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="post_link_jsonCredentials">
+        <label for="node-input-post_link_jsonCredentials"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.jsonCredentials"></span></label>
+
+        <input type="text" id="node-input-post_link_jsonCredentials" placeholder="For Google Cloud Storage links only. The JSON credentials of the link.
+
+This parameter is not allowed if `applicationDefaultCredentials` is provided.
+" style="width:70%">
+        <input type="hidden" id="node-input-post_link_jsonCredentialsType">
+    </div>
+
+    <div class="form-row" id="get_link_scope">
+        <label for="node-input-get_link_scope"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.scope"></span></label>
+
+        <input type="text" id="node-input-get_link_scope" placeholder="The name of the Analytics scope.
+
+With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-get_link_scopeType">
+    </div>
+
+    <div class="form-row" id="get_link_name">
+        <label for="node-input-get_link_name"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.name"></span></label>
+
+        <input type="text" id="node-input-get_link_name" placeholder="The name of the link." style="width:70%">
+        <input type="hidden" id="node-input-get_link_nameType">
+    </div>
+
+    <div class="form-row" id="get_link_type">
+        <label for="node-input-get_link_type"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.type"></span></label>
+        <select id="node-input-get_link_type">
+            <option value="couchbase">couchbase</option>
+            <option value="S3">S3</option>
+            <option value="azureblob">azureblob</option>
+            <option value="gcs">gcs</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="put_link_scope">
+        <label for="node-input-put_link_scope"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.scope"></span></label>
+
+        <input type="text" id="node-input-put_link_scope" placeholder="The name of the Analytics scope.
+
+With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_scopeType">
+    </div>
+
+    <div class="form-row" id="put_link_name">
+        <label for="node-input-put_link_name"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.name"></span></label>
+
+        <input type="text" id="node-input-put_link_name" placeholder="The name of the link." style="width:70%">
+        <input type="hidden" id="node-input-put_link_nameType">
+    </div>
+
+    <div class="form-row" id="put_link_type">
+        <label for="node-input-put_link_type"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.type"></span></label>
+        <select id="node-input-put_link_type">
+            <option value="couchbase">couchbase</option>
+            <option value="s3">s3</option>
+            <option value="azureblob">azureblob</option>
+            <option value="gcs">gcs</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="put_link_hostname">
+        <label for="node-input-put_link_hostname"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.hostname"></span></label>
+
+        <input type="text" id="node-input-put_link_hostname" placeholder="For Couchbase links only. The remote hostname.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_hostnameType">
+    </div>
+
+    <div class="form-row" id="put_link_encryption">
+        <label for="node-input-put_link_encryption"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.encryption"></span></label>
+        <select id="node-input-put_link_encryption">
+            <option value="none">none</option>
+            <option value="half">half</option>
+            <option value="full">full</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="put_link_username">
+        <label for="node-input-put_link_username"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.username"></span></label>
+
+        <input type="text" id="node-input-put_link_username" placeholder="For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_usernameType">
+    </div>
+
+    <div class="form-row" id="put_link_password">
+        <label for="node-input-put_link_password"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.password"></span></label>
+
+        <input type="text" id="node-input-put_link_password" placeholder="For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_passwordType">
+    </div>
+
+    <div class="form-row" id="put_link_certificate">
+        <label for="node-input-put_link_certificate"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.certificate"></span></label>
+
+        <input type="text" id="node-input-put_link_certificate" placeholder="For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.
+
+You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_certificateType">
+    </div>
+
+    <div class="form-row" id="put_link_clientCertificate">
+        <label for="node-input-put_link_clientCertificate"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientCertificate"></span></label>
+
+        <input type="text" id="node-input-put_link_clientCertificate" placeholder="For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.
+
+For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_clientCertificateType">
+    </div>
+
+    <div class="form-row" id="put_link_clientKey">
+        <label for="node-input-put_link_clientKey"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientKey"></span></label>
+
+        <input type="text" id="node-input-put_link_clientKey" placeholder="For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_clientKeyType">
+    </div>
+
+    <div class="form-row" id="put_link_accessKeyId">
+        <label for="node-input-put_link_accessKeyId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.accessKeyId"></span></label>
+
+        <input type="text" id="node-input-put_link_accessKeyId" placeholder="For S3 links only. The Amazon S3 access key ID.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_accessKeyIdType">
+    </div>
+
+    <div class="form-row" id="put_link_secretAccessKey">
+        <label for="node-input-put_link_secretAccessKey"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.secretAccessKey"></span></label>
+
+        <input type="text" id="node-input-put_link_secretAccessKey" placeholder="For S3 links only. The Amazon S3 secret access key.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_secretAccessKeyType">
+    </div>
+
+    <div class="form-row" id="put_link_sessionToken">
+        <label for="node-input-put_link_sessionToken"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.sessionToken"></span></label>
+
+        <input type="text" id="node-input-put_link_sessionToken" placeholder="For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.
+
+Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_sessionTokenType">
+    </div>
+
+    <div class="form-row" id="put_link_region">
+        <label for="node-input-put_link_region"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.region"></span></label>
+
+        <input type="text" id="node-input-put_link_region" placeholder="For S3 links only. The Amazon S3 region.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_regionType">
+    </div>
+
+    <div class="form-row" id="put_link_serviceEndpoint">
+        <label for="node-input-put_link_serviceEndpoint"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.serviceEndpoint"></span></label>
+
+        <input type="text" id="node-input-put_link_serviceEndpoint" placeholder="For S3 links only. The Amazon S3 service endpoint.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_serviceEndpointType">
+    </div>
+
+    <div class="form-row" id="put_link_accountName">
+        <label for="node-input-put_link_accountName"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.accountName"></span></label>
+
+        <input type="text" id="node-input-put_link_accountName" placeholder="For Azure Blob links only. The account name. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_accountNameType">
+    </div>
+
+    <div class="form-row" id="put_link_accountKey">
+        <label for="node-input-put_link_accountKey"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.accountKey"></span></label>
+
+        <input type="text" id="node-input-put_link_accountKey" placeholder="For Azure Blob links only. The account key. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_accountKeyType">
+    </div>
+
+    <div class="form-row" id="put_link_sharedAccessSignature">
+        <label for="node-input-put_link_sharedAccessSignature"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.sharedAccessSignature"></span></label>
+
+        <input type="text" id="node-input-put_link_sharedAccessSignature" placeholder="For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_sharedAccessSignatureType">
+    </div>
+
+    <div class="form-row" id="put_link_managedIdentityId">
+        <label for="node-input-put_link_managedIdentityId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.managedIdentityId"></span></label>
+
+        <input type="text" id="node-input-put_link_managedIdentityId" placeholder="For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_managedIdentityIdType">
+    </div>
+
+    <div class="form-row" id="put_link_clientId">
+        <label for="node-input-put_link_clientId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientId"></span></label>
+
+        <input type="text" id="node-input-put_link_clientId" placeholder="For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_clientIdType">
+    </div>
+
+    <div class="form-row" id="put_link_tenantId">
+        <label for="node-input-put_link_tenantId"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.tenantId"></span></label>
+
+        <input type="text" id="node-input-put_link_tenantId" placeholder="For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_tenantIdType">
+    </div>
+
+    <div class="form-row" id="put_link_clientSecret">
+        <label for="node-input-put_link_clientSecret"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientSecret"></span></label>
+
+        <input type="text" id="node-input-put_link_clientSecret" placeholder="For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_clientSecretType">
+    </div>
+
+    <div class="form-row" id="put_link_clientCertificatePassword">
+        <label for="node-input-put_link_clientCertificatePassword"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.clientCertificatePassword"></span></label>
+
+        <input type="text" id="node-input-put_link_clientCertificatePassword" placeholder="For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
+
+You should URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_clientCertificatePasswordType">
+    </div>
+
+    <div class="form-row" id="put_link_endpoint">
+        <label for="node-input-put_link_endpoint"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.endpoint"></span></label>
+
+        <input type="text" id="node-input-put_link_endpoint" placeholder="For Azure Blob links and Google Cloud Storage links. The endpoint URI.
+
+Required for Azure Blob links; optional for Google Cloud Storage links.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_endpointType">
+    </div>
+
+    <div class="form-row" id="put_link_applicationDefaultCredentials">
+        <label for="node-input-put_link_applicationDefaultCredentials"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.applicationDefaultCredentials"></span></label>
+        <select id="node-input-put_link_applicationDefaultCredentials">
+            <option value="true">true</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="put_link_jsonCredentials">
+        <label for="node-input-put_link_jsonCredentials"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.jsonCredentials"></span></label>
+
+        <input type="text" id="node-input-put_link_jsonCredentials" placeholder="For Google Cloud Storage links only. The JSON credentials of the link.
+
+This parameter is not allowed if `applicationDefaultCredentials` is provided.
+" style="width:70%">
+        <input type="hidden" id="node-input-put_link_jsonCredentialsType">
+    </div>
+
+    <div class="form-row" id="delete_link_scope">
+        <label for="node-input-delete_link_scope"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.scope"></span></label>
+
+        <input type="text" id="node-input-delete_link_scope" placeholder="The name of the Analytics scope.
+
+With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
+" style="width:70%">
+        <input type="hidden" id="node-input-delete_link_scopeType">
+    </div>
+
+    <div class="form-row" id="delete_link_name">
+        <label for="node-input-delete_link_name"><i class="fa fa-list"></i> <span data-i18n="AnalyticsLinksRestApi.parameters.name"></span></label>
+
+        <input type="text" id="node-input-delete_link_name" placeholder="The name of the link." style="width:70%">
+        <input type="hidden" id="node-input-delete_link_nameType">
+    </div>
+
+    <hr/>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="analytics-links-rest-api">
+
+    <p>The Analytics Links REST API is provided by the Analytics service.
+This API enables you to manage the links to remote Couchbase clusters and external data sources.
+
+The API schemes and host URLs are as follows:
+
+* `http://node:8095/`
+* `https://node:18095/` (for secure access)
+
+where `node` is the host name or IP address of a node running the Analytics service.
+</p>
+    <p><b>Methods</b></p>
+        <h3>POST /analytics/link</h3>
+        <p>An alternative endpoint for [creating a link](#create-link), provided for backward compatibility.</p>
+        <dl class="message-properties">
+        <dt>dataverse <span class="property-type">string</span></dt>
+        <dt>name <span class="property-type">string</span></dt>
+        <dt>type <span class="property-type">string</span></dt>
+        <dt>hostname <span class="property-type">string</span></dt>
+        <dt>encryption <span class="property-type">string</span></dt>
+        <dt>username <span class="property-type">string</span></dt>
+        <dt>password <span class="property-type">string</span></dt>
+        <dt>certificate <span class="property-type">string</span></dt>
+        <dt>clientCertificate <span class="property-type">string</span></dt>
+        <dt>clientKey <span class="property-type">string</span></dt>
+        <dt>accessKeyId <span class="property-type">string</span></dt>
+        <dt>secretAccessKey <span class="property-type">string</span></dt>
+        <dt>sessionToken <span class="property-type">string</span></dt>
+        <dt>region <span class="property-type">string</span></dt>
+        <dt>serviceEndpoint <span class="property-type">string</span></dt>
+        <dt>accountName <span class="property-type">string</span></dt>
+        <dt>accountKey <span class="property-type">string</span></dt>
+        <dt>sharedAccessSignature <span class="property-type">string</span></dt>
+        <dt>managedIdentityId <span class="property-type">string</span></dt>
+        <dt>clientId <span class="property-type">string</span></dt>
+        <dt>tenantId <span class="property-type">string</span></dt>
+        <dt>clientSecret <span class="property-type">string</span></dt>
+        <dt>clientCertificatePassword <span class="property-type">string</span></dt>
+        <dt>endpoint <span class="property-type">string</span></dt>
+        <dt>applicationDefaultCredentials <span class="property-type">string</span></dt>
+        <dt>jsonCredentials <span class="property-type">string</span></dt>
+        </dl>
+        <h3>GET /analytics/link</h3>
+        <p>Returns information about all links in all Analytics scopes.</p>
+        <dl class="message-properties">
+        <dt>dataverse <span class="property-type">string</span></dt>
+        <dt>name <span class="property-type">string</span></dt>
+        <dt>type <span class="property-type">string</span></dt>
+        </dl>
+        <h3>PUT /analytics/link</h3>
+        <p>An alternative endpoint for [editing a link](#edit-link), provided for backward compatibility. The link name, type, and scope name cannot be modified.
+</p>
+        <dl class="message-properties">
+        <dt>dataverse <span class="property-type">string</span></dt>
+        <dt>name <span class="property-type">string</span></dt>
+        <dt>type <span class="property-type">string</span></dt>
+        <dt>hostname <span class="property-type">string</span></dt>
+        <dt>encryption <span class="property-type">string</span></dt>
+        <dt>username <span class="property-type">string</span></dt>
+        <dt>password <span class="property-type">string</span></dt>
+        <dt>certificate <span class="property-type">string</span></dt>
+        <dt>clientCertificate <span class="property-type">string</span></dt>
+        <dt>clientKey <span class="property-type">string</span></dt>
+        <dt>accessKeyId <span class="property-type">string</span></dt>
+        <dt>secretAccessKey <span class="property-type">string</span></dt>
+        <dt>sessionToken <span class="property-type">string</span></dt>
+        <dt>region <span class="property-type">string</span></dt>
+        <dt>serviceEndpoint <span class="property-type">string</span></dt>
+        <dt>accountName <span class="property-type">string</span></dt>
+        <dt>accountKey <span class="property-type">string</span></dt>
+        <dt>sharedAccessSignature <span class="property-type">string</span></dt>
+        <dt>managedIdentityId <span class="property-type">string</span></dt>
+        <dt>clientId <span class="property-type">string</span></dt>
+        <dt>tenantId <span class="property-type">string</span></dt>
+        <dt>clientSecret <span class="property-type">string</span></dt>
+        <dt>clientCertificatePassword <span class="property-type">string</span></dt>
+        <dt>endpoint <span class="property-type">string</span></dt>
+        <dt>applicationDefaultCredentials <span class="property-type">string</span></dt>
+        <dt>jsonCredentials <span class="property-type">string</span></dt>
+        </dl>
+        <h3>DELETE /analytics/link</h3>
+        <p>An alternative endpoint for [deleting a link](#delete-link), provided for backward compatibility. The link cannot be deleted if any other entities are using it, such as an Analytics collection. The entities using the link need to be disconnected from the link, otherwise, the delete operation fails.
+</p>
+        <dl class="message-properties">
+        <dt>dataverse <span class="property-type">string</span></dt>
+        <dt>name <span class="property-type">string</span></dt>
+        </dl>
+        <h3>GET /analytics/link/{scope}</h3>
+        <p>Returns information about all links in the specified Analytics scope.</p>
+        <dl class="message-properties">
+        <dt>scope <span class="property-type">string</span></dt>
+        <dt>type <span class="property-type">string</span></dt>
+        </dl>
+        <h3>POST /analytics/link/{scope}/{name}</h3>
+        <p>Creates a link in the specified Analytics scope.</p>
+        <dl class="message-properties">
+        <dt>scope <span class="property-type">string</span></dt>
+        <dt>name <span class="property-type">string</span></dt>
+        <dt>type <span class="property-type">string</span></dt>
+        <dt>hostname <span class="property-type">string</span></dt>
+        <dt>encryption <span class="property-type">string</span></dt>
+        <dt>username <span class="property-type">string</span></dt>
+        <dt>password <span class="property-type">string</span></dt>
+        <dt>certificate <span class="property-type">string</span></dt>
+        <dt>clientCertificate <span class="property-type">string</span></dt>
+        <dt>clientKey <span class="property-type">string</span></dt>
+        <dt>accessKeyId <span class="property-type">string</span></dt>
+        <dt>secretAccessKey <span class="property-type">string</span></dt>
+        <dt>sessionToken <span class="property-type">string</span></dt>
+        <dt>region <span class="property-type">string</span></dt>
+        <dt>serviceEndpoint <span class="property-type">string</span></dt>
+        <dt>accountName <span class="property-type">string</span></dt>
+        <dt>accountKey <span class="property-type">string</span></dt>
+        <dt>sharedAccessSignature <span class="property-type">string</span></dt>
+        <dt>managedIdentityId <span class="property-type">string</span></dt>
+        <dt>clientId <span class="property-type">string</span></dt>
+        <dt>tenantId <span class="property-type">string</span></dt>
+        <dt>clientSecret <span class="property-type">string</span></dt>
+        <dt>clientCertificatePassword <span class="property-type">string</span></dt>
+        <dt>endpoint <span class="property-type">string</span></dt>
+        <dt>applicationDefaultCredentials <span class="property-type">string</span></dt>
+        <dt>jsonCredentials <span class="property-type">string</span></dt>
+        </dl>
+        <h3>GET /analytics/link/{scope}/{name}</h3>
+        <p>Returns information about a link in the specified Analytics scope.</p>
+        <dl class="message-properties">
+        <dt>scope <span class="property-type">string</span></dt>
+        <dt>name <span class="property-type">string</span></dt>
+        <dt>type <span class="property-type">string</span></dt>
+        </dl>
+        <h3>PUT /analytics/link/{scope}/{name}</h3>
+        <p>Edits an existing link in the specified Analytics scope. The link name, type, and scope name cannot be modified.
+</p>
+        <dl class="message-properties">
+        <dt>scope <span class="property-type">string</span></dt>
+        <dt>name <span class="property-type">string</span></dt>
+        <dt>type <span class="property-type">string</span></dt>
+        <dt>hostname <span class="property-type">string</span></dt>
+        <dt>encryption <span class="property-type">string</span></dt>
+        <dt>username <span class="property-type">string</span></dt>
+        <dt>password <span class="property-type">string</span></dt>
+        <dt>certificate <span class="property-type">string</span></dt>
+        <dt>clientCertificate <span class="property-type">string</span></dt>
+        <dt>clientKey <span class="property-type">string</span></dt>
+        <dt>accessKeyId <span class="property-type">string</span></dt>
+        <dt>secretAccessKey <span class="property-type">string</span></dt>
+        <dt>sessionToken <span class="property-type">string</span></dt>
+        <dt>region <span class="property-type">string</span></dt>
+        <dt>serviceEndpoint <span class="property-type">string</span></dt>
+        <dt>accountName <span class="property-type">string</span></dt>
+        <dt>accountKey <span class="property-type">string</span></dt>
+        <dt>sharedAccessSignature <span class="property-type">string</span></dt>
+        <dt>managedIdentityId <span class="property-type">string</span></dt>
+        <dt>clientId <span class="property-type">string</span></dt>
+        <dt>tenantId <span class="property-type">string</span></dt>
+        <dt>clientSecret <span class="property-type">string</span></dt>
+        <dt>clientCertificatePassword <span class="property-type">string</span></dt>
+        <dt>endpoint <span class="property-type">string</span></dt>
+        <dt>applicationDefaultCredentials <span class="property-type">string</span></dt>
+        <dt>jsonCredentials <span class="property-type">string</span></dt>
+        </dl>
+        <h3>DELETE /analytics/link/{scope}/{name}</h3>
+        <p>Deletes a link in the specified Analytics scope. The link cannot be deleted if any other entities are using it, such as an Analytics collection. The entities using the link need to be disconnected from the link, otherwise, the delete operation fails.
+</p>
+        <dl class="message-properties">
+        <dt>scope <span class="property-type">string</span></dt>
+        <dt>name <span class="property-type">string</span></dt>
+        </dl>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType('analytics-links-rest-api-service', {
+        category: 'config',
+        defaults: {
+            host: { value: "", required: true },
+
+
+            name: { value: "" },
+        },
+        credentials: {
+            username: { type: "text" },
+            password: { type: "password" },
+            temp: { type: "text" }
+        },
+        label: function () {
+            return this.name || this.host;
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="analytics-links-rest-api-service">
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="fa fa-globe"></i> <span data-i18n="AnalyticsLinksRestApi.label.host"></span></label>
+        <input type="text" id="node-config-input-host" placeholder="http://node:8095">
+    </div>
+
+    <div class="form-row">
+        <label id="node-config-input-username-label" for="node-config-input-username"><i class="fa fa-user"></i> <span data-i18n="node-red:common.label.username"></span></label>
+        <input type="text" id="node-config-input-username" placeholder="">
+    </div>
+    <div class="form-row">
+        <label id="node-config-input-password-label" for="node-config-input-password"><i class="fa fa-lock"></i> <span data-i18n="node-red:common.label.password"></span></label>
+        <input type="password" id="node-config-input-password" placeholder="">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="analytics-links-rest-api-service">
+    <p><b>Host</b>: URL to connect</p>
+
+    <p><b>Username</b>: Username in Basic authentication</p>
+    <p><b>Password</b>: Password in Basic authentication</p>
+</script>

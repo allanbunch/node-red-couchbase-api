@@ -1,0 +1,24 @@
+{
+    "AnalyticsConfigurationRestApi": {
+        "label": {
+            "service": "Service",
+            "method": "Methode",
+            "host": "Host",
+            "header": "Header",
+            "value": "Wert",
+            "isQuery": "Suchanfrage"
+        },
+        "status": {
+            "requesting": "Anfrage..."
+        },
+        "parameters": {
+            "get_service": "GET /analytics/config/service",
+            "put_service": "PUT /analytics/config/service",
+            "service": "Service",
+            "get_node": "GET /analytics/config/node",
+            "put_node": "PUT /analytics/config/node",
+            "node": "Node",
+            "optionalParameters": "Optionen"
+        }
+    }
+}

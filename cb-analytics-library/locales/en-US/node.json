@@ -1,0 +1,25 @@
+{
+    "AnalyticsLibraryRestApi": {
+        "label": {
+            "service": "Service",
+            "method": "Method",
+            "host": "Host",
+            "header": "Header",
+            "value": "Value",
+            "isQuery": "isQuery"
+        },
+        "status": {
+            "requesting": "requesting"
+        },
+        "parameters": {
+            "get_collection": "GET /analytics/library/",
+            "post_library": "POST /analytics/library/{scope}/{library}",
+            "data": "data",
+            "type": "type",
+            "library": "library",
+            "scope": "scope",
+            "delete_library": "DELETE /analytics/library/{scope}/{library}",
+            "optionalParameters": "Options"
+        }
+    }
+}

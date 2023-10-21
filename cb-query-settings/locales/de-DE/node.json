@@ -1,0 +1,23 @@
+{
+    "QuerySettingsRestApi": {
+        "label": {
+            "service": "Service",
+            "method": "Methode",
+            "host": "Host",
+            "header": "Header",
+            "value": "Wert",
+            "isQuery": "Suchanfrage"
+        },
+        "status": {
+            "requesting": "Anfrage..."
+        },
+        "parameters": {
+            "get_settings": "GET /settings/querySettings",
+            "post_settings": "POST /settings/querySettings",
+            "settings": "Settings",
+            "get_access": "GET /settings/querySettings/curlWhitelist",
+            "post_access": "POST /settings/querySettings/curlWhitelist",
+            "optionalParameters": "Optionen"
+        }
+    }
+}

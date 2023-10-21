@@ -1,0 +1,25 @@
+{
+    "AnalyticsAdministrationRestApis": {
+        "label": {
+            "service": "サービス",
+            "method": "メソッド",
+            "host": "ホスト",
+            "header": "ヘッダ",
+            "value": "値",
+            "isQuery": "クエリ"
+        },
+        "status": {
+            "requesting": "要求中"
+        },
+        "parameters": {
+            "cancel_request": "DELETE /analytics/admin/active_requests",
+            "clientContextId": "client_context_id",
+            "cluster_status": "GET /analytics/cluster",
+            "restart_cluster": "POST /analytics/cluster/restart",
+            "restart_node": "POST /analytics/node/restart",
+            "ingestion_status": "GET /analytics/status/ingestion",
+            "monitor_node": "GET /analytics/node/agg/stats/remaining",
+            "optionalParameters": "任意項目"
+        }
+    }
+}

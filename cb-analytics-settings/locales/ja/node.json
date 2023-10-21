@@ -1,0 +1,21 @@
+{
+    "AnalyticsSettingsRestApi": {
+        "label": {
+            "service": "サービス",
+            "method": "メソッド",
+            "host": "ホスト",
+            "header": "ヘッダ",
+            "value": "値",
+            "isQuery": "クエリ"
+        },
+        "status": {
+            "requesting": "要求中"
+        },
+        "parameters": {
+            "get_settings": "GET /settings/analytics",
+            "post_settings": "POST /settings/analytics",
+            "numReplicas": "numReplicas",
+            "optionalParameters": "任意項目"
+        }
+    }
+}

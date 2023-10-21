@@ -1,0 +1,50 @@
+{
+  "name": "@inductiv/node-red-couchbase-api",
+  "version": "0.1.0",
+  "description": "Node-RED nodes for the Couchbae REST API v7.2.0",
+  "main": "node.js",
+  "scripts": {
+    "test": "mocha \"test/**/*_spec.js\" --timeout 3000"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "node-red": {
+    "version": ">=1.3.7",
+    "nodes": {
+      "admin-rest-api": "./cb-admin/node.js",
+      "analytics-admin-api": "./cb-analytics-admin/node.js",
+      "analytics-config-api": "./cb-analytics-config/node.js",
+      "analytics-library-api": "./cb-analytics-library/node.js",
+      "analytics-links-api": "./cb-analytics-links/node.js",
+      "analytics-settings": "./cb-analytics-settings/node.js",
+      "functions": "./cb-functions/node.js",
+      "indexes": "./cb-indexes/node.js",
+      "query-service": "./cb-query-service/node.js",
+      "query-settings": "./cb-query-settings/node.js"
+    }
+  },
+  "keywords": [
+    "node-red",
+    "nodered",
+    "couchbase",
+    "api",
+    "low-code",
+    "vector-store",
+    "multi-model",
+    "no-sql"
+  ],
+  "dependencies": {
+    "file-type": "16.5.3",
+    "grunt": "^1.6.1",
+    "q": "1.5.1",
+    "request": "2.88.2"
+  },
+  "devDependencies": {
+    "mocha": "9.2.1",
+    "node-red": "2.2.2",
+    "node-red-node-test-helper": "0.2.7"
+  },
+  "author": "Allan Bunch",
+  "license": "MIT"
+}

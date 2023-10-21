@@ -1,0 +1,27 @@
+{
+    "IndexStatisticsRestApi": {
+        "label": {
+            "service": "サービス",
+            "method": "メソッド",
+            "host": "ホスト",
+            "header": "ヘッダ",
+            "value": "値",
+            "isQuery": "クエリ"
+        },
+        "status": {
+            "requesting": "要求中"
+        },
+        "parameters": {
+            "get_node_stats": "GET /api/v1/stats",
+            "pretty": "pretty",
+            "redact": "redact",
+            "skipEmpty": "skipEmpty",
+            "get_keyspace_stats": "GET /api/v1/stats/{keyspace}",
+            "keyspace": "keyspace",
+            "get_index_stats": "GET /api/v1/stats/{keyspace}/{index}",
+            "index": "index",
+            "partition": "partition",
+            "optionalParameters": "任意項目"
+        }
+    }
+}
