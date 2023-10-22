@@ -15,7 +15,7 @@ This package provides you with a set of Node-RED nodes for interfacing with Couc
 
 ```bash
 cd $HOME/.node-red
-npm install https://github.com/allanbunch/node-red-couchbase-api.git
+npm i @inductiv/node-red-couchbase-api
 ```
 
 ## Usage
