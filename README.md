@@ -1,6 +1,6 @@
 # @inductiv/node-red-couchbase-api
 
-This API enables you to run SQL++ queries and set request-level parameters.
+This package provides you with a set of Node-RED nodes for interfacing with Couchbase services.
 
 ## Table of Contents
 

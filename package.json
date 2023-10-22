@@ -1,6 +1,6 @@
 {
   "name": "@inductiv/node-red-couchbase-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Node-RED nodes for the Couchbae REST API v7.2.0",
   "main": "node.js",
   "scripts": {
