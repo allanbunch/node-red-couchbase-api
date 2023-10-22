@@ -20,7 +20,9 @@ npm install https://github.com/allanbunch/node-red-couchbase-api.git
 
 ## Usage
 
-Each node's functionality maps to the official Couchbase [REST API reference](https://docs.couchbase.com/server/current/rest-api/rest-intro.html) documentation.
+You can find implementations of each node in the [example](./examples/api-examples.json) flow.
+
+Note: Each node's functionality maps to the official Couchbase [REST API reference](https://docs.couchbase.com/server/current/rest-api/rest-intro.html) documentation.
 
 ## License
 
