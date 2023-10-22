@@ -11,7 +11,7 @@
         "id": "498ae4f3aef3fabc",
         "type": "admin-rest-api",
         "z": "475803a65c8333af",
-        "service": "2708c077f735ebf9",
+        "service": "",
         "method": "get_clusters",
         "get_cluster_cluster": "",
         "get_cluster_clusterType": "str",
@@ -38,7 +38,7 @@
         "post_settings_settings": "",
         "post_settings_settingsType": "str",
         "name": "Cluster Admin API",
-        "x": 650,
+        "x": 590,
         "y": 120,
         "wires": [
             [
@@ -50,13 +50,13 @@
         "id": "00a9cf54f348c09e",
         "type": "analytics-administration-rest-apis",
         "z": "475803a65c8333af",
-        "service": "6e06d30bf3a8eb0d",
+        "service": "",
         "method": "cluster_status",
         "cancel_request_clientContextId": "",
         "cancel_request_clientContextIdType": "str",
         "name": "Analytics Admin API",
-        "x": 660,
-        "y": 240,
+        "x": 600,
+        "y": 220,
         "wires": [
             [
                 "b0351fa80322e26c"
@@ -67,15 +67,15 @@
         "id": "a614af4e01143868",
         "type": "analytics-configuration-rest-api",
         "z": "475803a65c8333af",
-        "service": "46b2a904e0438830",
+        "service": "",
         "method": "get_service",
         "put_service_service": "",
         "put_service_serviceType": "str",
         "put_node_node": "",
         "put_node_nodeType": "str",
         "name": "Analytics Config API",
-        "x": 660,
-        "y": 360,
+        "x": 600,
+        "y": 320,
         "wires": [
             [
                 "973df8685e4d87d4"
@@ -86,7 +86,7 @@
         "id": "3bc53d024113a9c2",
         "type": "analytics-library-rest-api",
         "z": "475803a65c8333af",
-        "service": "532893adafd61cfe",
+        "service": "",
         "method": "get_collection",
         "post_library_data": "",
         "post_library_dataType": "str",
@@ -101,8 +101,8 @@
         "delete_library_scope": "",
         "delete_library_scopeType": "str",
         "name": "Analytics Library API",
-        "x": 660,
-        "y": 480,
+        "x": 600,
+        "y": 420,
         "wires": [
             [
                 "20621dfed18924ca"
@@ -113,13 +113,13 @@
         "id": "6423d3c3023ebf04",
         "type": "analytics-settings-rest-api",
         "z": "475803a65c8333af",
-        "service": "760bb54ac0d91f4d",
+        "service": "",
         "method": "get_settings",
         "post_settings_numReplicas": "",
         "post_settings_numReplicasType": "str",
         "name": "Analytics Settings API",
-        "x": 660,
-        "y": 720,
+        "x": 600,
+        "y": 620,
         "wires": [
             [
                 "83e725079fbf0f5f"
@@ -130,7 +130,7 @@
         "id": "02d7df7d8df94b5c",
         "type": "functions-rest-api",
         "z": "475803a65c8333af",
-        "service": "dea597afa5226e1a",
+        "service": "",
         "method": "get_collection",
         "get_collection_bucket": "",
         "get_collection_bucketType": "str",
@@ -157,8 +157,8 @@
         "delete_library_scope": "",
         "delete_library_scopeType": "str",
         "name": "Functions API",
-        "x": 640,
-        "y": 840,
+        "x": 580,
+        "y": 720,
         "wires": [
             [
                 "2e7a256ae56639bf"
@@ -169,7 +169,7 @@
         "id": "a4c57ce19f31a66b",
         "type": "index-statistics-rest-api",
         "z": "475803a65c8333af",
-        "service": "a711146a5094a31d",
+        "service": "",
         "method": "get_node_stats",
         "get_node_stats_pretty": "",
         "get_node_stats_prettyType": "str",
@@ -198,8 +198,8 @@
         "get_index_stats_skipEmpty": "",
         "get_index_stats_skipEmptyType": "str",
         "name": "Index API",
-        "x": 620,
-        "y": 960,
+        "x": 560,
+        "y": 820,
         "wires": [
             [
                 "c0d6aeae1e491dae"
@@ -210,15 +210,15 @@
         "id": "3d8882875b7760f7",
         "type": "query-settings-rest-api",
         "z": "475803a65c8333af",
-        "service": "ea6372ef830af581",
+        "service": "",
         "method": "get_settings",
         "post_settings_settings": "",
         "post_settings_settingsType": "str",
         "post_access_settings": "",
         "post_access_settingsType": "str",
         "name": "Query Settings API",
-        "x": 650,
-        "y": 1200,
+        "x": 590,
+        "y": 1020,
         "wires": [
             [
                 "675b6faabd79cd17"
@@ -236,13 +236,14 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 290,
+        "x": 255,
         "y": 120,
         "wires": [
             [
                 "498ae4f3aef3fabc"
             ]
-        ]
+        ],
+        "l": false
     },
     {
         "id": "37e3144d52f13a33",
@@ -272,13 +273,14 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 290,
-        "y": 240,
+        "x": 255,
+        "y": 220,
         "wires": [
             [
                 "00a9cf54f348c09e"
             ]
-        ]
+        ],
+        "l": false
     },
     {
         "id": "b0351fa80322e26c",
@@ -294,7 +296,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 990,
-        "y": 240,
+        "y": 220,
         "wires": []
     },
     {
@@ -324,13 +326,14 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 290,
-        "y": 360,
+        "x": 255,
+        "y": 320,
         "wires": [
             [
                 "a614af4e01143868"
             ]
-        ]
+        ],
+        "l": false
     },
     {
         "id": "973df8685e4d87d4",
@@ -346,7 +349,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 990,
-        "y": 360,
+        "y": 320,
         "wires": []
     },
     {
@@ -360,13 +363,14 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 290,
-        "y": 480,
+        "x": 255,
+        "y": 420,
         "wires": [
             [
                 "3bc53d024113a9c2"
             ]
-        ]
+        ],
+        "l": false
     },
     {
         "id": "20621dfed18924ca",
@@ -382,7 +386,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 990,
-        "y": 480,
+        "y": 420,
         "wires": []
     },
     {
@@ -396,13 +400,14 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 290,
-        "y": 600,
+        "x": 255,
+        "y": 520,
         "wires": [
             [
                 "b0c65d71333c2ca8"
             ]
-        ]
+        ],
+        "l": false
     },
     {
         "id": "9ccaa0f49090a354",
@@ -418,14 +423,14 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 990,
-        "y": 600,
+        "y": 520,
         "wires": []
     },
     {
         "id": "b0c65d71333c2ca8",
         "type": "analytics-links-rest-api",
         "z": "475803a65c8333af",
-        "service": "5fc78a0b4e0cc536",
+        "service": "",
         "method": "get_all",
         "post_alt_dataverse": "",
         "post_alt_dataverseType": "str",
@@ -660,8 +665,8 @@
         "delete_link_name": "",
         "delete_link_nameType": "str",
         "name": "Analytics Links API",
-        "x": 650,
-        "y": 600,
+        "x": 590,
+        "y": 520,
         "wires": [
             [
                 "9ccaa0f49090a354"
@@ -682,7 +687,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 990,
-        "y": 720,
+        "y": 620,
         "wires": []
     },
     {
@@ -696,13 +701,14 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 290,
-        "y": 720,
+        "x": 255,
+        "y": 620,
         "wires": [
             [
                 "6423d3c3023ebf04"
             ]
-        ]
+        ],
+        "l": false
     },
     {
         "id": "0959b46473412aa1",
@@ -715,13 +721,14 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 290,
-        "y": 840,
+        "x": 255,
+        "y": 720,
         "wires": [
             [
                 "02d7df7d8df94b5c"
             ]
-        ]
+        ],
+        "l": false
     },
     {
         "id": "2e7a256ae56639bf",
@@ -737,7 +744,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 990,
-        "y": 840,
+        "y": 720,
         "wires": []
     },
     {
@@ -751,13 +758,14 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 290,
-        "y": 960,
+        "x": 255,
+        "y": 820,
         "wires": [
             [
                 "a4c57ce19f31a66b"
             ]
-        ]
+        ],
+        "l": false
     },
     {
         "id": "c0d6aeae1e491dae",
@@ -773,7 +781,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 990,
-        "y": 960,
+        "y": 820,
         "wires": []
     },
     {
@@ -794,7 +802,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 340,
-        "y": 1080,
+        "y": 920,
         "wires": [
             [
                 "f18788c460019d3a"
@@ -815,20 +823,20 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1020,
-        "y": 1080,
+        "y": 920,
         "wires": []
     },
     {
         "id": "f18788c460019d3a",
         "type": "query-service-rest-api",
         "z": "475803a65c8333af",
-        "service": "8b4961d529e4f3c4",
+        "service": "",
         "method": "post_service",
         "post_service_parameters": "payload",
         "post_service_parametersType": "msg",
         "name": "sql++ query",
-        "x": 630,
-        "y": 1080,
+        "x": 570,
+        "y": 920,
         "wires": [
             [
                 "952abdc1e3ac3698"
@@ -846,13 +854,14 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 290,
-        "y": 1200,
+        "x": 255,
+        "y": 1020,
         "wires": [
             [
                 "3d8882875b7760f7"
             ]
-        ]
+        ],
+        "l": false
     },
     {
         "id": "675b6faabd79cd17",
@@ -868,7 +877,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 990,
-        "y": 1200,
+        "y": 1020,
         "wires": []
     },
     {
@@ -888,7 +897,7 @@
         "name": "These APIs enables you to manage and monitor the Analytics service.",
         "info": "# Analytics Admin API\n\n[Official documentation](https://docs.couchbase.com/server/current/analytics/rest-admin.html)",
         "x": 470,
-        "y": 200,
+        "y": 180,
         "wires": []
     },
     {
@@ -898,7 +907,7 @@
         "name": "This API enables you to configure Analytics nodes and clusters.",
         "info": "# Analytics Config API\n\n[Official documentation](https://docs.couchbase.com/server/current/analytics/rest-config.html)",
         "x": 450,
-        "y": 320,
+        "y": 280,
         "wires": []
     },
     {
@@ -908,7 +917,7 @@
         "name": "This API enables you to configure Analytics nodes and clusters.",
         "info": "# Analytics Library API\n\n[Official documentation](https://docs.couchbase.com/server/current/analytics/rest-library.html)",
         "x": 450,
-        "y": 440,
+        "y": 380,
         "wires": []
     },
     {
@@ -918,7 +927,7 @@
         "name": "This API enables you to manage the links to remote Couchbase clusters and external data sources.",
         "info": "# Analytics Links API\n\n[Official documentation](https://docs.couchbase.com/server/current/analytics/rest-links.html)",
         "x": 560,
-        "y": 560,
+        "y": 480,
         "wires": []
     },
     {
@@ -928,7 +937,7 @@
         "name": "This API enables you to view or set cluster-level Analytics settings.",
         "info": "# Analytics Settings REST API\n\n[Official documentation](https://docs.couchbase.com/server/current/analytics/rest-settings.html)",
         "x": 460,
-        "y": 680,
+        "y": 580,
         "wires": []
     },
     {
@@ -938,7 +947,7 @@
         "name": " This API enables you to manage the JavaScript libraries and objects that are used to create {sqlpp} user-defined functions.",
         "info": "# Functions API\n\n[Official documentation](https://docs.couchbase.com/server/current/rest-api/rest-intro.html#javascript-management)",
         "x": 630,
-        "y": 800,
+        "y": 680,
         "wires": []
     },
     {
@@ -948,7 +957,7 @@
         "name": "The Index Service REST API provides configuration options for the Index Service.",
         "info": "# Index Service API\n\n[Official documentation](https://docs.couchbase.com/server/current/rest-api/rest-intro.html#index-service-api)",
         "x": 500,
-        "y": 920,
+        "y": 780,
         "wires": []
     },
     {
@@ -958,7 +967,7 @@
         "name": "This method allows you to run queries and modifying statements, and specify query parameters.",
         "info": "# SQL++ Statement Execution\n\n[Official documentation](https://docs.couchbase.com/server/current/n1ql/n1ql-rest-api/index.html#_post_service)",
         "x": 550,
-        "y": 1040,
+        "y": 880,
         "wires": []
     },
     {
@@ -968,68 +977,7 @@
         "name": "This API enables you to view or specify cluster-level Query settings.",
         "info": "# Cluster Query Settings API\n\n[Official documentation](https://docs.couchbase.com/server/current/rest-api/rest-cluster-query-settings.html)",
         "x": 460,
-        "y": 1160,
+        "y": 980,
         "wires": []
-    },
-    {
-        "id": "2708c077f735ebf9",
-        "type": "admin-rest-api-service",
-        "host": "http://localhost:8093",
-        "name": "Cluster Admin Auth"
-    },
-    {
-        "id": "6e06d30bf3a8eb0d",
-        "type": "analytics-administration-rest-apis-service",
-        "host": "http://localhost:8095",
-        "name": "Analytics Admin Auth"
-    },
-    {
-        "id": "46b2a904e0438830",
-        "type": "analytics-configuration-rest-api-service",
-        "host": "http://localhost:8095",
-        "name": "Admin Service Auth"
-    },
-    {
-        "id": "532893adafd61cfe",
-        "type": "analytics-library-rest-api-service",
-        "host": "http://localhost:8095",
-        "name": "Analytics Library Auth"
-    },
-    {
-        "id": "760bb54ac0d91f4d",
-        "type": "analytics-settings-rest-api-service",
-        "host": "http://localhost:8091",
-        "name": "Analytics Settings Auth"
-    },
-    {
-        "id": "dea597afa5226e1a",
-        "type": "functions-rest-api-service",
-        "host": "http://localhost:8093",
-        "name": "Index Functions Config"
-    },
-    {
-        "id": "a711146a5094a31d",
-        "type": "index-statistics-rest-api-service",
-        "host": "http://localhost:9102",
-        "name": "Index API Auth"
-    },
-    {
-        "id": "ea6372ef830af581",
-        "type": "query-settings-rest-api-service",
-        "host": "http://localhost:8091",
-        "name": "Query Settings Auth"
-    },
-    {
-        "id": "5fc78a0b4e0cc536",
-        "type": "analytics-links-rest-api-service",
-        "host": "http://localhost:8095",
-        "name": "Analytics Links Auth"
-    },
-    {
-        "id": "8b4961d529e4f3c4",
-        "type": "query-service-rest-api-service",
-        "host": "http://localhost:8093",
-        "secureApiKeyHeaderOrQueryName": "",
-        "name": "Query Service Auth"
     }
 ]
